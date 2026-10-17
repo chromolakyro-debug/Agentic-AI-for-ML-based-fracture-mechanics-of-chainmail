@@ -134,6 +134,9 @@ Fracture **strength**, **fracture energy**, and **fracture toughness** are disti
 
 ## Related Work and Research Gap
 
+The full ~500-word literature review is available at [docs/literature_review.md](docs/literature_review.md); a shorter paper-by-paper synthesis is at [docs/related_work.md](docs/related_work.md).
+
+
 Van ’t Sant et al. [1] introduced forward/inverse neural networks for designing growth-based 2D cellular metamaterials with targeted **anisotropic elastic stiffness**. Luan et al. [2] used interpretable ML to relate morphological descriptors to the **effective elastic properties** of ordered and disordered cellular metamaterials. Xiang et al. [3] combined VAEs and ANNs to decouple structural and material distributions for **stiffness-driven inverse design** in hybrid metamaterials.
 
 Together, these studies establish useful approaches for geometry generation, structure–property prediction, interpretation, and inverse design. **They do not establish a validated ML fracture prediction system.** Fracture depends on localized stress concentration, damage initiation, failure sequences, and evolving crack paths; similar homogenized stiffness need not imply similar fracture strength. This project aims to extend these methodological ideas with reproducible fracture-focused simulations and to evaluate agent-assisted scientific prioritization. This is a gap identified *relative to these three papers*, not a claim that the broader literature lacks ML-based fracture studies.
@@ -155,6 +158,7 @@ Dates are target checkpoints from the supplied course guideline, not claims that
 ```text
 README.md                      Project proposal and roadmap
 docs/related_work.md           Literature synthesis
+ docs/literature_review.md     Full ~500-word literature review
 docs/implementation_plan.md    Engineering and validation plan
 docs/lab_reports/              Biweekly reporting materials
 research_log.md                Ongoing done/remaining/bottleneck log
