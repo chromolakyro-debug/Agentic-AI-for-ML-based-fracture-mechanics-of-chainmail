@@ -1,0 +1,333 @@
+{
+  "classes": [
+    {
+      "group_id": "01",
+      "group_name_zh": "写实点画",
+      "group_name_en": "Realistic Stippling",
+      "group_label": "realistic_stippling",
+      "expected_count": 750
+    },
+    {
+      "group_id": "02",
+      "group_name_zh": "写实笔绘",
+      "group_name_en": "Realistic Ink Drawing",
+      "group_label": "realistic_ink_drawing",
+      "expected_count": 1500
+    },
+    {
+      "group_id": "03",
+      "group_name_zh": "几何三角",
+      "group_name_en": "Triangular Geometry",
+      "group_label": "triangular_geometry",
+      "expected_count": 750
+    },
+    {
+      "group_id": "04",
+      "group_name_zh": "几何破碎",
+      "group_name_en": "Fragmented Geometry",
+      "group_label": "fragmented_geometry",
+      "expected_count": 750
+    },
+    {
+      "group_id": "05",
+      "group_name_zh": "像素线描",
+      "group_name_en": "Pixel Line Art",
+      "group_label": "pixel_line_art",
+      "expected_count": 759
+    },
+    {
+      "group_id": "06",
+      "group_name_zh": "像素实心",
+      "group_name_en": "Solid Pixel Art",
+      "group_label": "solid_pixel_art",
+      "expected_count": 766
+    },
+    {
+      "group_id": "07",
+      "group_name_zh": "卡通",
+      "group_name_en": "Cartoon",
+      "group_label": "cartoon",
+      "expected_count": 1500
+    },
+    {
+      "group_id": "08",
+      "group_name_zh": "剪影",
+      "group_name_en": "Silhouette",
+      "group_label": "silhouette",
+      "expected_count": 1082
+    }
+  ],
+  "exact_requested_style_mapping": {
+    "angular_graphic": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "binary_pen__00": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "binary_pen__01": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "binary_pen__02": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "binary_pen__03": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "bold_ink": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "broad_folk": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "comic__00": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "comic__01": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "comic__02": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "comic__03": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "filled_angular_cutpaper": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "filled_cartoon": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "filled_rounded_ink": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "filled_silhouette": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "geometric__00": {
+      "action": "keep",
+      "group_id": "04"
+    },
+    "geometric__01": {
+      "action": "keep",
+      "group_id": "04"
+    },
+    "geometric__02": {
+      "action": "keep",
+      "group_id": "04"
+    },
+    "geometric__03": {
+      "action": "keep",
+      "group_id": "04"
+    },
+    "halftone__00": {
+      "action": "keep",
+      "group_id": "01"
+    },
+    "halftone__01": {
+      "action": "keep",
+      "group_id": "01"
+    },
+    "halftone__02": {
+      "action": "keep",
+      "group_id": "01"
+    },
+    "halftone__03": {
+      "action": "keep",
+      "group_id": "01"
+    },
+    "inverted_line__00": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "inverted_line__01": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "inverted_line__02": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "inverted_line__03": {
+      "action": "keep",
+      "group_id": "07"
+    },
+    "outline_pixel__00": {
+      "action": "keep",
+      "group_id": "05"
+    },
+    "outline_pixel__01": {
+      "action": "keep",
+      "group_id": "05"
+    },
+    "outline_pixel__02": {
+      "action": "keep",
+      "group_id": "05"
+    },
+    "outline_pixel__03": {
+      "action": "keep",
+      "group_id": "05"
+    },
+    "paper_cut": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "pixel_fluffy": {
+      "action": "keep",
+      "group_id": "06"
+    },
+    "pixel_tabby": {
+      "action": "keep",
+      "group_id": "06"
+    },
+    "pixel_tuxedo": {
+      "action": "keep",
+      "group_id": "06"
+    },
+    "portrait_pixel_tabby": {
+      "action": "keep",
+      "group_id": "05"
+    },
+    "rounded_cartoon": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "soft_folk": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "solid_silhouette": {
+      "action": "keep",
+      "group_id": "08"
+    },
+    "triangular_lattice__00": {
+      "action": "keep",
+      "group_id": "03"
+    },
+    "triangular_lattice__01": {
+      "action": "keep",
+      "group_id": "03"
+    },
+    "triangular_lattice__02": {
+      "action": "keep",
+      "group_id": "03"
+    },
+    "triangular_lattice__03": {
+      "action": "keep",
+      "group_id": "03"
+    },
+    "whiskered_sprite__00": {
+      "action": "keep",
+      "group_id": "06"
+    },
+    "whiskered_sprite__01": {
+      "action": "keep",
+      "group_id": "06"
+    },
+    "whiskered_sprite__02": {
+      "action": "keep",
+      "group_id": "06"
+    },
+    "whiskered_sprite__03": {
+      "action": "keep",
+      "group_id": "06"
+    },
+    "woodcut__00": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "woodcut__01": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "woodcut__02": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "woodcut__03": {
+      "action": "keep",
+      "group_id": "02"
+    },
+    "anatomical_ink": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "angular_contour": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "clean_outline": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "contour_and_fill": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "fur_woodcut": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "hollow_ink": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "pixel_round": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "portrait_fluffy_ink": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "portrait_tabby_stencil": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "portrait_tuxedo": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "sculpted_cutpaper": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "tabby_linocut": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    },
+    "tuxedo_graphic": {
+      "action": "delete",
+      "reason": "User-specified whole requested_style exclusion"
+    }
+  },
+  "unmatched_policy": "STOP and report; never infer or delete unknown labels",
+  "sorting": "Within each class: original numeric sample ID, then original relative path",
+  "new_identity": "Class-local cat_000001 filename; globally unique new_id is 01_cat_000001, etc.",
+  "split": {
+    "mode": "class_stratified_resplit",
+    "seed": 20261116,
+    "ratios": [
+      0.8,
+      0.1,
+      0.1
+    ],
+    "user_resolution": "User explicitly chose re-stratification by the eight new classes over the conflicting filter-only acceptance clause.",
+    "preserve_old_split": "Archived verbatim and also filtered/reindexed in provenance; not the active split"
+  },
+  "normalization": "Retain original CFM mean/std exactly; label as frozen legacy statistics, not fitted to the new training split"
+}

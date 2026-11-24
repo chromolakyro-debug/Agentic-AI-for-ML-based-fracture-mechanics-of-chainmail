@@ -1,0 +1,28 @@
+{
+  "version": "old_equal_width_6x6",
+  "source": "analysis\\curated_augmented_distribution\\grid_v1_equal_width\\s_a\\counts.json",
+  "source_sha256": "fb8a405c7ae330178d8137feecfd83dccf628320d9b1ac7e6ba7ad46b000ff97",
+  "s_edges": [
+    0.0,
+    0.3837641821656743,
+    0.7675283643313486,
+    1.151292546497023,
+    1.5350567286626973,
+    1.9188209108283716,
+    2.302585092994046
+  ],
+  "a_edges": [
+    -1.1069110914828049,
+    -0.7379407276552032,
+    -0.3689703638276016,
+    0.0,
+    0.3689703638276016,
+    0.7379407276552032,
+    1.1069110914828049
+  ],
+  "row_convention": "one based; row 1 at bottom (smallest a); column 1 at left (smallest s)",
+  "expected_targets": 24,
+  "esoft": 1.0,
+  "formula": "s=0.5*(log(Ex/Esoft)+log(Ey/Esoft)); a=log(Ex/Ey)",
+  "units": "Original FEM modulus units; Esoft=1, Ehard=10; not an independently calibrated physical unit"
+}

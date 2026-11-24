@@ -1,0 +1,92 @@
+[
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 300000,
+    "validation_mse": 0.0956314277358865,
+    "checkpoint_sha256": "7b098e718cffed286dc532051c085d49e38cf7b2f33173a46e88b9b62350b7b5",
+    "output": "evaluation/runs/cfm_v1_cont1_step_300000",
+    "config": "cfm_v1_cont1/configs/evaluation_300000.json",
+    "seconds": 172.75764290010557
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 320000,
+    "validation_mse": 0.09543126565581969,
+    "checkpoint_sha256": "cd38fdfc7d358ed2de533e471cf017cf952836d8425b13a9a27311df09158cb6",
+    "output": "evaluation/runs/cfm_v1_cont1_step_320000",
+    "config": "cfm_v1_cont1/configs/evaluation_320000.json",
+    "seconds": 167.04572700010613
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 340000,
+    "validation_mse": 0.09531482833297805,
+    "checkpoint_sha256": "423e0215a7eb03900027a18373dc46e2cf27c181a3af6aa015cae1ad9cc42bbb",
+    "output": "evaluation/runs/cfm_v1_cont1_step_340000",
+    "config": "cfm_v1_cont1/configs/evaluation_340000.json",
+    "seconds": 164.1524575999938
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 360000,
+    "validation_mse": 0.09488438978393114,
+    "checkpoint_sha256": "2f3fcdf851a7027862cd87a60462c38131ea8ad1a2f2c66e5844a88f157e24fd",
+    "output": "evaluation/runs/cfm_v1_cont1_step_360000",
+    "config": "cfm_v1_cont1/configs/evaluation_360000.json",
+    "seconds": 168.76697840029374
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 360000,
+    "validation_mse": 0.09488438978393114,
+    "checkpoint_sha256": "2f3fcdf851a7027862cd87a60462c38131ea8ad1a2f2c66e5844a88f157e24fd",
+    "output": "evaluation/runs/cfm_v1_cont1_step_360000",
+    "config": "cfm_v1_cont1/configs/evaluation_360000.json",
+    "seconds": 10.717184299603105
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 360000,
+    "validation_mse": 0.09488438978393114,
+    "checkpoint_sha256": "2f3fcdf851a7027862cd87a60462c38131ea8ad1a2f2c66e5844a88f157e24fd",
+    "output": "evaluation/runs/cfm_v1_cont1_step_360000",
+    "config": "cfm_v1_cont1/configs/evaluation_360000.json",
+    "seconds": 10.108308999799192
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 415000,
+    "validation_mse": 0.09467294956758884,
+    "checkpoint_sha256": "b5ba6b80ec5de9da36a94d7a4a17bb04939984837187230c6e6ef63bb89e756e",
+    "output": "evaluation/runs/cfm_v1_cont1_step_415000",
+    "config": "cfm_v1_cont1/configs/evaluation_415000.json",
+    "seconds": 170.08308670017868
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 440000,
+    "validation_mse": 0.09446574944253945,
+    "checkpoint_sha256": "ef9317522e571062d02f2cd2a867ccd406c1eeb2cbb7a9212e931f5bf4f5192d",
+    "output": "evaluation/runs/cfm_v1_cont1_step_440000",
+    "config": "cfm_v1_cont1/configs/evaluation_440000.json",
+    "seconds": 170.28966919984668
+  },
+  {
+    "reason": "periodic_20k",
+    "checkpoint_step": 440000,
+    "validation_mse": 0.09446574944253945,
+    "checkpoint_sha256": "ef9317522e571062d02f2cd2a867ccd406c1eeb2cbb7a9212e931f5bf4f5192d",
+    "output": "evaluation/runs/cfm_v1_cont1_step_440000",
+    "config": "cfm_v1_cont1/configs/evaluation_440000.json",
+    "seconds": 11.21597080025822
+  },
+  {
+    "reason": "final_best_val_mse",
+    "checkpoint_step": 480000,
+    "validation_mse": 0.09409229462117942,
+    "checkpoint_sha256": "e90b49e897a4ebe7c15e205a56616e99a71f6c1c6af7f638392362456efc8973",
+    "output": "evaluation/runs/cfm_v1_cont1_step_480000",
+    "config": "cfm_v1_cont1/configs/evaluation_480000.json",
+    "seconds": 167.0093598999083
+  }
+]

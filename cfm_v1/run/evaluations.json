@@ -1,0 +1,72 @@
+[
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 160000,
+    "checkpoint_sha256": "e03593e645551bc9e8bfd5b0c0c524184d75aaf7c0e210c17aae5b58c53e14e5",
+    "validation_mse": 0.09827384089638713,
+    "config": "evaluation\\configs\\cfm_v1_step_160000.json",
+    "output": "evaluation/runs/cfm_v1_step_160000",
+    "seconds": 171.2633584998548,
+    "utc": "2026-11-17T18:25:44.855799+00:00"
+  },
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 180000,
+    "checkpoint_sha256": "65565444c295a4037813f4b0f99911cf66a7817712a5dc191dc620b38f33c4d6",
+    "validation_mse": 0.09781108950158111,
+    "config": "evaluation\\configs\\cfm_v1_step_180000.json",
+    "output": "evaluation/runs/cfm_v1_step_180000",
+    "seconds": 162.74305189959705,
+    "utc": "2026-11-17T19:35:07.929710+00:00"
+  },
+  {
+    "reason": "final_best_val_mse",
+    "checkpoint_step": 200000,
+    "checkpoint_sha256": "18f13aeeb4611b891533f6a1067d749132855d064c1d2bce98a5f5ba84e99ee2",
+    "validation_mse": 0.09719099248012969,
+    "config": "evaluation\\configs\\cfm_v1_step_200000.json",
+    "output": "evaluation/runs/cfm_v1_step_200000",
+    "seconds": 170.49678190005943,
+    "utc": "2026-11-17T20:44:53.367987+00:00"
+  },
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 220000,
+    "checkpoint_sha256": "030159180cdb07522bac51540666644af4cd4ce2fa93357e799b618f0a99605f",
+    "validation_mse": 0.0968324628921638,
+    "config": "evaluation\\configs\\cfm_v1_step_220000.json",
+    "output": "evaluation/runs/cfm_v1_step_220000",
+    "seconds": 170.00146049959585,
+    "utc": "2026-11-17T21:55:13.193097+00:00"
+  },
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 240000,
+    "checkpoint_sha256": "0344b11b56712fe18ac5db60129cb21be1da408e4d4bffae7a3f4576ffa95a81",
+    "validation_mse": 0.09661324115579062,
+    "config": "evaluation\\configs\\cfm_v1_step_240000.json",
+    "output": "evaluation/runs/cfm_v1_step_240000",
+    "seconds": 167.15975730028003,
+    "utc": "2026-11-17T23:04:47.198478+00:00"
+  },
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 260000,
+    "checkpoint_sha256": "9b5771af310ca50c0998a18b8a100cee41c2e851838605bde99c84cf6b6ebc5e",
+    "validation_mse": 0.09627456982968417,
+    "config": "evaluation\\configs\\cfm_v1_step_260000.json",
+    "output": "evaluation/runs/cfm_v1_step_260000",
+    "seconds": 163.99888369999826,
+    "utc": "2026-11-18T00:14:04.058091+00:00"
+  },
+  {
+    "reason": "final_best_val_mse",
+    "checkpoint_step": 280000,
+    "checkpoint_sha256": "045b98f85061df7dc7360cd5319ec01319796b8629df2815fa84e0271665527d",
+    "validation_mse": 0.09608178820849678,
+    "config": "evaluation\\configs\\cfm_v1_step_280000.json",
+    "output": "evaluation/runs/cfm_v1_step_280000",
+    "seconds": 170.59211339987814,
+    "utc": "2026-11-18T01:23:34.177560+00:00"
+  }
+]

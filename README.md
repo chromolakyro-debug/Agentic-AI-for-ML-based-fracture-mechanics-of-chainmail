@@ -1,180 +1,88 @@
-# Agentic AI for ML-Based Fracture Mechanics of Chainmail
+# Cat Shaped Mechanical Metamaterials
 
-> Research proposal and project roadmap — **planning stage; simulation and AI workflows are not yet implemented.**
+This repository now contains the current cat-materials project. Its historical URL retains the name of an earlier chainmail proposal; that proposal is superseded by this research snapshot. Earlier commits remain in history.
 
-## Overview
+**Author:** Henry Yan. **Snapshot:** November 23, 2026.
 
-This project investigates fracture mechanics in **two-dimensional (2D) cellular, lattice, and chainmail-inspired metamaterials** through an agent-assisted research workflow. Its central premise is to first establish a **deterministic, reproducible simulation infrastructure** and then use an **agentic AI system** to explore scientific hypotheses, prioritize follow-up studies, and compare AI research judgment with human expert judgment.
+The goal is to generate diverse, recognizable cat-shaped two-phase materials with requested apparent specimen moduli using conditional flow matching (CFM). Codex assists the researcher with coding, tool execution, analysis and verification. The trained CFM is the generator; numerical FEM and human visual review evaluate its outputs.
 
-Although the repository name refers to *chainmail*, the initial research scope is broader: planar cellular/lattice structures. Chainmail-specific contact, interlocking, and large-deformation fracture physics are potential extensions and **should not be assumed to be modeled by the initial lattice solver**.
+## Lab 4 submission
 
-## Two Research Objectives
+- [Two-page Lab Report 4](docs/lab4/Lab4_Report_Henry_Yan.docx), including AI usage disclosure.
+- [Nine-slide demo](docs/lab4/Lab4_Demo_Henry_Yan.pptx), adapted from the supplied course template.
+- [Google Slides demo](https://docs.google.com/presentation/d/1Bpnb3tLiahZ7mzwPqjg8RyOGRO3NYjHmIwl6Brcs_Qw/edit).
+- [64-step interactive evaluation](evaluation/runs/cfm_v2_step_165000/index_en.html).
+- [128-step interactive evaluation](evaluation/runs/cfm_v2_step_165000/index_128steps.html).
 
-1. **Mechanics:** Identify and quantify geometric, topological, and material features that affect the fracture strength and failure behavior of 2D lattice metamaterials.
-2. **AI for science:** Compare human experts' judgments with an AI **research-taste agent** in selecting promising research directions, and measure their agreement quantitatively.
+Download/clone the repository and open the HTML files locally: GitHub shows their source rather than executing them. These lightweight copies embed the displayed generated/retrieved images. Raw array download links require the full research workspace. The original research outputs remain unchanged locally.
 
-## Research Questions
+## Pipeline and evidence
 
-- Which local and global lattice descriptors — e.g., relative density, strut orientation, node connectivity, cell compactness, defect location, and disorder — best explain fracture initiation and strength?
-- How do structures with similar effective elastic stiffness differ in damage localization and fracture response?
-- Can a reproducible fracture simulator support autonomous generation and testing of scientifically meaningful hypotheses?
-- How consistently does an AI agent rank research opportunities compared with human experts, and how well do those rankings predict subsequent scientific value?
+Human goals and budgets → Codex orchestration → curated image data and FEM labels → conditional U-Net training → target plus fixed Gaussian noise → binary generation → real FEM → training retrieval → statistics and HTML review.
 
-## Proposed Research Workflow
+- Dataset: 7,857 curated binary images in 8 art categories; 6,285/786/786 train/validation/test split. Full image data are omitted from Git; schema, class definitions, index and split files are included.
+- Materials: white is soft (E=1), black is hard (E=10), and both have Poisson ratio 0.3. Both are solid phases.
+- Mechanics: Python Q4 plane-stress FEM, one element per pixel, strain-controlled finite-specimen tests, apparent Ex/Ey from reaction forces. This is not Abaqus or periodic homogenization.
+- Conditions: s = 0.5 ln(Ex Ey / Esoft²), a = ln(Ex/Ey), with Esoft=1.
+- Current generator: CFM v2 without D4 augmentation, 11,529,633 parameters; training stopped at 180k under the agreed plateau rule, with the best validation EMA at 165k. This stopping rule is not proof of full convergence.
+- Evaluation: 24 frozen target positions and 10 fixed seeds per target. Checkpoints are selected by validation velocity MSE, not FEM error. The fixed panel is reused and is not a fresh holdout.
 
-### Stage 1 — Build a deterministic fracture simulation pipeline
+| Metric over all 240 fixed samples | 64 midpoint steps | 128 midpoint steps |
+| --- | ---: | ---: |
+| Network evaluations per image | 128 | 256 |
+| Valid FEM solutions | 240 | 240 |
+| Joint s-a hits | 109 (45.4%) | 106 (44.2%) |
+| Both Ex and Ey within 5% | 65 (27.1%) | 69 (28.8%) |
+| Mean Euclidean Ex/Ey error | 0.360630 | 0.360589 |
 
-Use coding agents to develop and maintain a domain-specific simulation and analysis toolkit. The **numerical solver and its outputs must remain deterministic** under fixed parameters, mesh, software version, and random seeds; agent assistance is for software construction and orchestration, not for substituting plausible-looking results for actual calculations.
+A joint s-a hit requires |delta s| <= ln(1.05) AND |delta a| <= ln(1.10). All seeds count in the denominator; this is distinct from selecting the best of 10. The 128-step run uses the same checkpoint, targets, seeds and initial noise. Four matched examples show no clear visual improvement; this does not establish that additional sampling steps never help.
 
-**Planned capabilities**
-- Generate ordered, disordered, and randomized 2D lattices with explicit reproducible seeds.
-- Introduce structural features: geometry modifications, missing struts, notches, defects, disorder, and material heterogeneity.
-- Define material properties, boundary conditions, and loading protocols; run parameter sweeps and calibrated simulations.
-- Solve baseline elasticity and an explicitly specified damage/fracture model (to be selected and validated).
-- Determine operational fracture metrics such as first damage event, peak force / critical load, nominal fracture strength, and crack/failure progression. Where appropriate, distinguish these from fracture toughness.
-- Export stress–strain or force–displacement curves, deformed configurations, stress/strain/damage fields, failure maps, and diagnostic figures.
-- Capture intermediate fields and solver traces for auditing and downstream learning rather than retaining only final scalar metrics.
+Recognizable examples include T08/730000 and T04/730007. T12/730000 returns a thin white fragment despite a valid FEM solution. The gold frame in HTML denotes the mechanically best generated sample, not the most cat-like one. Training retrieval is a non-generative baseline and does not test visual memorization. Blinded visual ratings, diversity, novelty, sparse-target generalization and isolated agent-versus-manual productivity remain unresolved.
 
-**Quality gates:** verification against analytical/toy benchmarks, mesh and time/load-step sensitivity, conservation/balance checks as applicable, documented units and constitutive assumptions, run manifests, stable seeds, and regression tests. Failed/nonconverged simulations must be explicitly marked, not silently included as measurements.
+## Code map
 
-**Example proposed output layout**
-```text
-results/<experiment_id>/<run_id>/
-  config.yaml
-  metadata.json
-  geometry.json
-  mesh.*
-  fields/
-  force_displacement.csv
-  stress_strain.csv
-  failure_events.csv
-  figures/
-  diagnostics.json
+- `mechanics.py`, `mechanics_checks.py`: FEM and physics checks.
+- `reference_style_*.py`, other root generation scripts: original data creation/curation workflow.
+- `cat_binary_dataset_curated_v1/`: lightweight data documentation and index.
+- `cfm_v0/`, `cfm_continuation/`, `cfm_v1/`, `cfm_v1_cont1/`, `cfm_v2/`: model, training, continuation and ablation code.
+- `evaluation/`: adapters, fixed target/seed configs, generation, FEM, retrieval, cache checks and reporting.
+- `analysis/`: selected distribution plotting scripts.
+- `docs/lab4/`: submitted report and demo.
+
+## Reproduce checks and inspect results
+
+Python 3.10 was used for the research environment. The included requirements specify the original CUDA/PyTorch environment; adapt the PyTorch wheel to your hardware before installation if needed.
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -r requirements.txt
+.\.venv\Scripts\python evaluation/tests_core.py
+python scripts/check_published_results.py
 ```
 
-The goal is a focused research tool inspired by commercial simulation platforms, **not** a claim to reproduce their generality, validation, or capabilities.
+The first command runs seven core invariants covering target transforms, training-only retrieval, source uniqueness, cache corruption, fixed distance scales and failure accounting. They were rerun successfully on November 23. The second check uses only the published CSV files and Python's standard library, so it needs neither training data nor a GPU.
 
-### Stage 2 — Stochastic agentic scientific discovery
+To regenerate images or retrain, restore the excluded assets at the paths recorded in `EXTERNAL_ASSETS.json`, and obtain the full curated metadata/images and the run-preparation artifacts referenced by the configurations. The recorded configs intentionally preserve their original data/checkpoint binding. This Git snapshot alone is sufficient for inspecting the saved evidence and testing core logic, but not for reproducing training without those external assets. No public download location for the full assets is claimed.
 
-Once the deterministic pipeline meets verification criteria, build a separate stochastic **hypothesis-generation and experiment-planning** workflow.
+With the complete research workspace restored:
 
-Agents may propose lattice features, formulate testable hypotheses, request controlled simulation batches, analyze intermediate and final outputs, and produce evidence-linked discovery reports. Every proposed claim must refer to actual simulation run IDs, uncertainty or sensitivity analysis where feasible, and recorded assumptions. Maintain a separation between **agent-generated ideas** and **solver-generated evidence**.
-
-### Stage 3 — Human vs. AI research judgment
-
-Present the **same standardized candidate findings/proposals** to human experts and an AI research-taste agent. Both independently score each item from **−1 to +1**:
-
-- **−1:** not worth pursuing / weak or misleading direction
-- **0:** uncertain or neutral research value
-- **+1:** highly promising and worth pursuing
-
-Use a common rubric (novelty, physical plausibility, expected insight, feasibility, and reproducibility). Collect anonymized human ratings when possible, record expert count and inter-rater reliability, and avoid leaking human scores into the agent evaluation before scoring.
-
-Compare judgments using **Pearson correlation** for linear agreement and **Spearman rank correlation** for ranking agreement; report sample sizes and confidence intervals, and consider agreement/error measures alongside correlation. Predefine a held-out evaluation set where practical. **Correlation measures agreement, not scientific correctness.** Also assess whether prioritized directions yield validated discoveries.
-
-### Stage 4 — Deepen selected research directions
-
-For hypotheses supported by initial simulation data and expert/agent reviews:
-
-1. Design controlled follow-up experiments and ablations.
-2. Perform robustness and sensitivity studies over lattice classes, seeds, load cases, material parameters, and discretization.
-3. Investigate mechanisms through intermediate stress, deformation, and damage fields.
-4. Replicate promising effects with independent settings or models; record negative and contradictory results.
-
-### Stage 5 — Select, validate, and write the paper
-
-Identify the strongest scientifically defensible findings for an ML-based fracture mechanics paper. Present the mechanical discovery, numerical validation, interpretation, uncertainty, and the human–AI judgment comparison as clearly separated contributions. Build publication-quality plots and tables from versioned scripts, with traceable raw simulation outputs.
-
-## System Architecture (Proposed)
-
-```text
-Geometry + materials + loading + seeds
-                  |
-                  v
-    Deterministic simulation pipeline
-    geometry -> mesh -> solve -> postprocess
-                  |
-                  v
-    Versioned data, fields, diagnostics, figures
-                  |
-          +-------+--------+
-          |                |
-          v                v
-   ML/feature study   Discovery agents
-                           |
-                           v
-                 Hypotheses + evidence
-                           |
-                  +--------+--------+
-                  |                 |
-                  v                 v
-              Human experts    Taste agent
-                  |                 |
-                  +--------+--------+
-                           |
-                           v
-                 Score / rank / compare
-                           |
-                           v
-                 Follow-up simulations
-                           |
-                           v
-                   Validated paper
+```powershell
+python evaluation/run.py --config evaluation/runs/cfm_v2_step_165000/config.json
+python evaluation/resample_v2_165k_128steps.py
 ```
 
-## Initial Scope and Methodology
+These commands run inference/evaluation, not training. See `evaluation/README.md` and `cfm_v2/REPORT.md` for stage-level operation, solver conventions, checkpoint selection and stopping policy.
 
-- **Primary domain:** 2D cellular/lattice metamaterials, potentially including chainmail-inspired planar architectures.
-- **Baseline mechanics:** quasi-static, small-strain elastic truss/beam or continuum representations as appropriate; fracture model and assumptions must be selected explicitly before claiming any failure predictions.
-- **Primary labels:** peak force, nominal strength, first-failure displacement/strain, energy absorption, and structural failure progression.
-- **Candidate input features:** relative density; strut thickness and orientation distribution; nodal coordination; cell shape/compactness; defects; topology; degree of disorder; material contrast.
-- **Research safeguards:** deterministic reruns, holdout topologies rather than only random sample splits, no training/test leakage, clear uncertainty and known applicability limits.
+## Progress and next two weeks
 
-Fracture **strength**, **fracture energy**, and **fracture toughness** are distinct quantities; measured and predicted outputs will be named and defined precisely.
+Completed: curated dataset, FEM labeling, CFM training/ablations, integrated generation-to-HTML evaluation, controlled 64/128-step sampling comparison, and numerical/provenance checks.
 
-## Related Work and Research Gap
+Remaining: define and apply a blind cat-quality rubric and inspect visual nearest neighbors (Nov 23-29); inspect flow-matching trajectories and time-dependent errors, then test one controlled intervention (Nov 30-Dec 6). Freeze evidence and rehearse the demo before the final presentation. The main bottleneck is understanding and improving shape quality.
 
-The full ~500-word literature review is available at [docs/literature_review.md](docs/literature_review.md); a shorter paper-by-paper synthesis is at [docs/related_work.md](docs/related_work.md).
+Risks include subjective visual ratings, memorization, sparse mechanical support and incomplete external-asset availability. Report these limits explicitly; do not infer cat quality from a low mechanics error.
 
+## Publication scope and AI disclosure
 
-Van ’t Sant et al. [1] introduced forward/inverse neural networks for designing growth-based 2D cellular metamaterials with targeted **anisotropic elastic stiffness**. Luan et al. [2] used interpretable ML to relate morphological descriptors to the **effective elastic properties** of ordered and disordered cellular metamaterials. Xiang et al. [3] combined VAEs and ANNs to decouple structural and material distributions for **stiffness-driven inverse design** in hybrid metamaterials.
+This is a curated publication snapshot of the current research workspace. Large training weights, the full image dataset, virtual environments, caches, raw sampling arrays, bulk training logs, archived ZIP packages and duplicate intermediate outputs are intentionally excluded. No historical local research files were deleted to prepare this snapshot. Each file in `PUBLICATION_MANIFEST.json` records its hash and size.
 
-Together, these studies establish useful approaches for geometry generation, structure–property prediction, interpretation, and inverse design. **They do not establish a validated ML fracture prediction system.** Fracture depends on localized stress concentration, damage initiation, failure sequences, and evolving crack paths; similar homogenized stiffness need not imply similar fracture strength. This project aims to extend these methodological ideas with reproducible fracture-focused simulations and to evaluate agent-assisted scientific prioritization. This is a gap identified *relative to these three papers*, not a claim that the broader literature lacks ML-based fracture studies.
-
-## Milestones (AM/ME/CE 295 biweekly labs)
-
-| Checkpoint | Target date (2026) | Planned deliverable |
-| --- | --- | --- |
-| Lab 1 | Oct 18 | Repo, related work, draft proposal, environment plan, running log |
-| Lab 2 | Nov 1 | One-page proposal, defined fracture model, dataset/design specifications |
-| Lab 3 | Nov 15 | First verifiable end-to-end toy simulation producing a figure |
-| Lab 4 | Nov 29 | Integrated generation-to-simulation-to-analysis demo with documented failure modes |
-| Lab 5 | TBD (consult course guideline) | Reliability audit, human–AI evaluation prototype, research presentation |
-
-Dates are target checkpoints from the supplied course guideline, not claims that each stage has been completed.
-
-## Repository Layout
-
-```text
-README.md                      Project proposal and roadmap
-docs/related_work.md           Literature synthesis
- docs/literature_review.md     Full ~500-word literature review
-docs/implementation_plan.md    Engineering and validation plan
-docs/lab_reports/              Biweekly reporting materials
-research_log.md                Ongoing done/remaining/bottleneck log
-src/                           Planned implementation
-configs/                       Planned experiment configurations
-experiments/                   Planned experiment scripts/records
-results/                       Planned generated outputs
-tests/                         Planned verification tests
-```
-
-## Current Status
-
-**Proposal and scaffolding only.** No solver, ML model, automatic discovery agent, human study, or scientific fracture result is included at initialization. Issues and planned deliverables should not be mistaken for completed functionality.
-
-## References
-
-1. Van ’t Sant, S., Thakolkaran, P., Martínez, J., & Kumar, S. (2023). *Inverse-designed growth-based cellular metamaterials*. **Mechanics of Materials**, 182, 104668. https://doi.org/10.1016/j.mechmat.2023.104668
-2. Luan, S., Chen, E., John, J., & Gaitanaros, S. (2023). *A data-driven framework for structure-property correlation in ordered and disordered cellular metamaterials*. **Science Advances**, 9, eadi1453. https://doi.org/10.1126/sciadv.adi1453
-3. Xiang, Y., Hou, J., Chen, X., Tang, K., & Wang, X. (2025). *Decoupled design of hybrid mechanical metamaterials via ensembled deep learning*. **International Journal of Mechanical Sciences**, 301, 110514. https://doi.org/10.1016/j.ijmecsci.2025.110514
+ChatGPT/Codex assisted with code, workflow orchestration, experiment analysis, figures and drafting. Generative image tools created source images. Reported mechanics derive from executed numerical code, and visual/scientific conclusions require human judgment.

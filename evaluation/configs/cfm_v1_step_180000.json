@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "adapter": "adapters.dataset:NumpyMetadataDataset",
+    "version": "curated_eight_classes_v1_7857",
+    "directory": "cat_binary_dataset_curated_v1",
+    "metadata": "metadata.csv",
+    "array": "dataset.npy",
+    "labels": "cfm_v1/run/data.npz",
+    "splits": "cfm_v1/run/splits.json",
+    "training_index_key": "train",
+    "id_field": "new_id",
+    "image_prefix": "images",
+    "image_field": "filename",
+    "Ex_field": "Ex_app",
+    "Ey_field": "Ey_app",
+    "class_field": "group_name_en",
+    "pixel_hash_field": "sha256_pixels",
+    "id_numeric_prefix": null,
+    "dedup_field_priority": [
+      [
+        "source",
+        "source_id"
+      ],
+      [
+        "source",
+        "source_seed"
+      ],
+      [
+        "source",
+        "seed"
+      ]
+    ],
+    "npz_id_key": "sample_ids"
+  },
+  "targets": "evaluation/configs/targets.json",
+  "diagnostic_targets": "evaluation/configs/diagnostic_targets.json",
+  "grid": "evaluation/configs/grid.json",
+  "seeds": "evaluation/configs/seeds.json",
+  "model": {
+    "adapter": "adapters.cfm:CFMAdapter",
+    "module_file": "cfm_v0/model.py",
+    "class_name": "ConditionalUNet",
+    "architecture": {
+      "channels": [
+        32,
+        64,
+        128,
+        192,
+        256
+      ],
+      "emb": 256
+    },
+    "weights_key": "ema",
+    "dataset_binding": {
+      "metadata": "0907d2800a682c8ac04dc8a19df8aeb14196657c0fb43208add5faf42d245344",
+      "array": "09018df7a0901399133bb9c844f9d1c812d8314e4cbc01dc86fa746f63a373bd",
+      "labels": "275495c8a4426459f80c07e8bbfeff8435c4468650380f377dfe26a1aeba033b",
+      "splits": "fd869e5db878458c2834b7bff720721c07d039caa7567a19fbd5d7766f85e8f6"
+    },
+    "normalization": {
+      "mean": [
+        1.3468542913757353,
+        -0.07920149220683437
+      ],
+      "std": [
+        0.6247915272590735,
+        0.18194416985386477
+      ]
+    },
+    "extra_conditioning": {},
+    "checkpoint": "cfm_v1/run/evaluation_checkpoints/best_val_180000.pt",
+    "checkpoint_sha256": "65565444c295a4037813f4b0f99911cf66a7817712a5dc191dc620b38f33c4d6"
+  },
+  "sampling": {
+    "method": "midpoint",
+    "steps": 64,
+    "shape": [
+      224,
+      224
+    ],
+    "precision": "bfloat16",
+    "state_dtype": "float32",
+    "device": "cuda",
+    "batch_size": 10,
+    "noise_generator": "torch_cuda_generator_per_seed",
+    "cpu_threads": 4,
+    "global_seed": 20261117,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "allow_tf32": true
+  },
+  "preprocessing": {
+    "threshold": 0.0,
+    "comparison": ">=",
+    "raw_representation": "x=2*binary-1",
+    "black_hard": 0,
+    "white_soft": 1,
+    "resize": false,
+    "flip": false,
+    "raw_dtype": "float32",
+    "binary_dtype": "uint8",
+    "image_columns": "physical x increasing right",
+    "image_rows": "physical y decreasing down; FEM performs flipud"
+  },
+  "fem": {
+    "adapter": "adapters.fem:OriginalFEM",
+    "module_file": "mechanics.py",
+    "workers": 8,
+    "preconditioner_seed": 20261117,
+    "parameters": {
+      "shape": [
+        224,
+        224
+      ],
+      "soft_modulus": 1.0,
+      "hard_modulus": 10.0,
+      "poisson": 0.3,
+      "width": 40.0,
+      "height": 40.0,
+      "thickness": 2.0,
+      "strain": 0.001,
+      "solver": "amg",
+      "tolerance": 1e-09,
+      "max_iterations": 1200
+    }
+  },
+  "retrieval": {
+    "top_k": 10,
+    "distance": {
+      "name": "euclidean_Ex_Ey_fixed_scales",
+      "scales": [
+        1.0,
+        1.0
+      ],
+      "allow_axis_swap": true,
+      "scale_source": "fixed original FEM units, no fitting"
+    },
+    "source_dedup": true,
+    "display_orientation": "original_unrotated"
+  },
+  "tolerances": {
+    "Ex_relative": 0.05,
+    "Ey_relative": 0.05,
+    "s": 0.04879016416943204,
+    "a": 0.09531017980432493,
+    "relative_denominator_floor": 1e-12
+  },
+  "statistics": {
+    "variance_ddof": 1
+  },
+  "cache": "evaluation/cache",
+  "run_id": "cfm_v1_step_180000"
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "path": "cfm_v2/run/checkpoints/best_val_mse.pt",
+    "bytes": 46202494,
+    "sha256": "7dde6711cf046b7fd77741319710e86a798f5e46c13f58e995c15110298b5df7"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/last.pt",
+    "bytes": 184785646,
+    "sha256": "f84f4b1216ff909ca8d586083cbca4756b10f0d79273e632386a709d7ed1bd7f"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_040000.pt",
+    "bytes": 184783406,
+    "sha256": "9425dd4ea913de96e0e97fb9e5caf6c616c1c3f184d6513df35c3a8a56e602a5"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_060000.pt",
+    "bytes": 184783726,
+    "sha256": "19405d64a974349e4c828abdf31d61e88bdb6fc708ee5dfd3f9811a31cd74f92"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_080000.pt",
+    "bytes": 184784046,
+    "sha256": "4e8d8f2adbd19cd681a4d44916038d91b2ab6b1c6be3f0d3757f6a5d3b11abbe"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_100000.pt",
+    "bytes": 184784366,
+    "sha256": "242fce1e66b17bd178892c4749f848f3501cc3a0d5c6b51e96331048f795d907"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_120000.pt",
+    "bytes": 184784686,
+    "sha256": "3660fabefc2b2c5f581e2f0884460345f38651417cae1d84e192bf61d7b2cfc5"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_140000.pt",
+    "bytes": 184785006,
+    "sha256": "7aea0713494726881b67a5f7afb93e59a6e296d22b143e95aa3aa2b1097d9d67"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_160000.pt",
+    "bytes": 184785326,
+    "sha256": "73f1ce39e1721adbe72777167936980efed3bc14fbbf3014b5257735622ebc95"
+  },
+  {
+    "path": "cfm_v2/run/checkpoints/step_180000.pt",
+    "bytes": 184785646,
+    "sha256": "f84f4b1216ff909ca8d586083cbca4756b10f0d79273e632386a709d7ed1bd7f"
+  },
+  {
+    "path": "cfm_v2/run/evaluation_checkpoints/best_val_100000.pt",
+    "bytes": 46202494,
+    "sha256": "eac77418bd9166da45bbfbc15019e0b5d42f4079622b4c3f3b50ea37dd02d8d5"
+  },
+  {
+    "path": "cfm_v2/run/evaluation_checkpoints/best_val_120000.pt",
+    "bytes": 46202494,
+    "sha256": "633dbef404ecbf9db2367f712368de5d8c18fce862275977a5b543f14b78df28"
+  },
+  {
+    "path": "cfm_v2/run/evaluation_checkpoints/best_val_125000.pt",
+    "bytes": 46202494,
+    "sha256": "9d0dd22d053fbb4eccbddfc6a89ccf37d3282739a7ed928069bd6405d875c249"
+  },
+  {
+    "path": "cfm_v2/run/evaluation_checkpoints/best_val_150000.pt",
+    "bytes": 46202494,
+    "sha256": "9dba1c377644f9d714c1a9b06d668c56f389c0afc2e984ff8bbd6b8eb0a86058"
+  },
+  {
+    "path": "cfm_v2/run/evaluation_checkpoints/best_val_165000.pt",
+    "bytes": 46202494,
+    "sha256": "7dde6711cf046b7fd77741319710e86a798f5e46c13f58e995c15110298b5df7"
+  }
+]

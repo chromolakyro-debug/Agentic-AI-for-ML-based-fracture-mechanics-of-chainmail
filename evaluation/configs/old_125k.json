@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "adapter": "adapters.dataset:NumpyMetadataDataset",
+    "version": "original_8000_v6",
+    "directory": "cat_binary_dataset",
+    "metadata": "metadata.csv",
+    "array": "dataset.npy",
+    "labels": "cfm_v0/run/data.npz",
+    "splits": "cfm_v0/run/splits.json",
+    "training_index_key": "train",
+    "id_field": "filename",
+    "image_prefix": "images",
+    "image_field": "filename",
+    "Ex_field": "Ex_app",
+    "Ey_field": "Ey_app",
+    "class_field": "requested_style",
+    "pixel_hash_field": "sha256_pixels",
+    "id_numeric_prefix": "cat_",
+    "dedup_field_priority": [
+      [
+        "source",
+        "source_id"
+      ],
+      [
+        "source",
+        "source_seed"
+      ],
+      [
+        "source",
+        "seed"
+      ]
+    ]
+  },
+  "targets": "evaluation/configs/targets.json",
+  "diagnostic_targets": "evaluation/configs/diagnostic_targets.json",
+  "grid": "evaluation/configs/grid.json",
+  "seeds": "evaluation/configs/seeds.json",
+  "model": {
+    "adapter": "adapters.cfm:CFMAdapter",
+    "module_file": "cfm_v0/model.py",
+    "class_name": "ConditionalUNet",
+    "architecture": {
+      "channels": [
+        32,
+        64,
+        128,
+        192,
+        256
+      ],
+      "emb": 256
+    },
+    "weights_key": "ema",
+    "dataset_binding": {
+      "metadata": "aeb0eca8f315a22f68bec1c3be0e2d3f0fd84a9b9f93ad4fab2391f198a79a03",
+      "array": "e9faa14e6ea338b5f5c6ecf4e30749405598b745766d63fcfe2c120df3458c7f",
+      "labels": "79064c667275daf6aac506c75ce7412b78d36f3a99c12252360aaea5445a6bb5",
+      "splits": "817fb349a0c876a8d9f5961623a1c4ca306d2f8d7325d856608ef77f113ce163"
+    },
+    "normalization": {
+      "mean": [
+        1.3606831407862798,
+        -0.07714614234910423
+      ],
+      "std": [
+        0.6256737270125351,
+        0.18044273911112527
+      ]
+    },
+    "extra_conditioning": {},
+    "checkpoint": "cfm_continuation/run/checkpoints/best.pt",
+    "checkpoint_sha256": "49a3dbccde85f12ba4a09da55075387e17f561fa84a6c261ebc4a1d04f0f1640"
+  },
+  "sampling": {
+    "method": "midpoint",
+    "steps": 64,
+    "shape": [
+      224,
+      224
+    ],
+    "precision": "bfloat16",
+    "state_dtype": "float32",
+    "device": "cuda",
+    "batch_size": 10,
+    "noise_generator": "torch_cuda_generator_per_seed",
+    "cpu_threads": 4,
+    "global_seed": 20261117,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "allow_tf32": true
+  },
+  "preprocessing": {
+    "threshold": 0.0,
+    "comparison": ">=",
+    "raw_representation": "x=2*binary-1",
+    "black_hard": 0,
+    "white_soft": 1,
+    "resize": false,
+    "flip": false,
+    "raw_dtype": "float32",
+    "binary_dtype": "uint8",
+    "image_columns": "physical x increasing right",
+    "image_rows": "physical y decreasing down; FEM performs flipud"
+  },
+  "fem": {
+    "adapter": "adapters.fem:OriginalFEM",
+    "module_file": "mechanics.py",
+    "workers": 8,
+    "preconditioner_seed": 20261117,
+    "parameters": {
+      "shape": [
+        224,
+        224
+      ],
+      "soft_modulus": 1.0,
+      "hard_modulus": 10.0,
+      "poisson": 0.3,
+      "width": 40.0,
+      "height": 40.0,
+      "thickness": 2.0,
+      "strain": 0.001,
+      "solver": "amg",
+      "tolerance": 1e-09,
+      "max_iterations": 1200
+    }
+  },
+  "retrieval": {
+    "top_k": 10,
+    "distance": {
+      "name": "euclidean_Ex_Ey_fixed_scales",
+      "scales": [
+        1.0,
+        1.0
+      ],
+      "allow_axis_swap": true,
+      "scale_source": "fixed original FEM units, no fitting"
+    },
+    "source_dedup": true,
+    "display_orientation": "original_unrotated"
+  },
+  "tolerances": {
+    "Ex_relative": 0.05,
+    "Ey_relative": 0.05,
+    "s": 0.04879016416943204,
+    "a": 0.09531017980432493,
+    "relative_denominator_floor": 1e-12
+  },
+  "statistics": {
+    "variance_ddof": 1
+  },
+  "cache": "evaluation/cache",
+  "run_id": "old_125k"
+}

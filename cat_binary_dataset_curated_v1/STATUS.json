@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "completed_at_utc": "2026-11-17T05:39:14.144991+00:00",
+  "ready_for_data_loading": true,
+  "full_validation": "validation.json",
+  "existing_loader_validation": "loader_validation.json",
+  "integrity_manifest": "integrity_manifest.json",
+  "integrity_manifest_sha256": "abe3d119a2fa19f07f2db9e39246f2f5668beb7f1c643f669aec2d8364f8c051",
+  "retained": 7857,
+  "excluded": 143,
+  "class_count": 8,
+  "split_policy": "User-confirmed new class-stratified 80/10/10; old splits archived.",
+  "training_note": "This is a data release. Original normalization is preserved; future training sampler/support configuration belongs to a separate experiment."
+}

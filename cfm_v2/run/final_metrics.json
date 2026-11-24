@@ -1,0 +1,8 @@
+{
+  "images": 240,
+  "valid": 240,
+  "failed": 0,
+  "mean_d_mech": 0.3606300544572479,
+  "joint_s_a_hits": 109,
+  "joint_Ex_Ey_hits": 65
+}

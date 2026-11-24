@@ -1,0 +1,97 @@
+[
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/best_val_mse.pt",
+    "bytes": 46202878,
+    "sha256": "e90b49e897a4ebe7c15e205a56616e99a71f6c1c6af7f638392362456efc8973"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/last.pt",
+    "bytes": 184790318,
+    "sha256": "7d4d6911e446d94779635b2743bdd6bd3e0eb76bc52355c634e7c4095c1f2bb8"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_300000.pt",
+    "bytes": 184787374,
+    "sha256": "e5d7f3edf81029229edcb51d0df418f261ea0cd3d05c45d0147eb81e497d6464"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_320000.pt",
+    "bytes": 184787694,
+    "sha256": "b11339e76cabd8f6651aab59d4470c759364f6ae33179d3fe1bdac2ea4d07678"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_340000.pt",
+    "bytes": 184788078,
+    "sha256": "01b074b9ff504c4ba6f5ee87d025d020327b616b9258c5783562f6b01df0c624"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_360000.pt",
+    "bytes": 184788398,
+    "sha256": "519549b811156a8ad07e8bb3edbd31c7a84817336758701c1a9ed41971f29cf2"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_380000.pt",
+    "bytes": 184788718,
+    "sha256": "b9d5a74c05c3b74483b8ea0a17eaa786676773dc035fe0c47ad43857a19dadf7"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_400000.pt",
+    "bytes": 184789038,
+    "sha256": "607c4bd3fe1790be91943811cd5157198959bbb8a61a87523e335b500f0982df"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_420000.pt",
+    "bytes": 184789358,
+    "sha256": "70fa1cdb7aefcf4dcc357a75d1d9bb447c1d7d36ed432d9b7f298073dccb15fb"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_440000.pt",
+    "bytes": 184789678,
+    "sha256": "b21ae4cf066e50a9318021fdca016081a7173a243ceccfb7c68c081a369ccb5c"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_460000.pt",
+    "bytes": 184789998,
+    "sha256": "d9fca01cb8df9ec4832f39268633ba823a8bc0e1416589922f58ee4ee0765eb1"
+  },
+  {
+    "path": "cfm_v1_cont1/run/checkpoints/step_480000.pt",
+    "bytes": 184790318,
+    "sha256": "7d4d6911e446d94779635b2743bdd6bd3e0eb76bc52355c634e7c4095c1f2bb8"
+  },
+  {
+    "path": "cfm_v1_cont1/run/evaluation_checkpoints/best_val_300000.pt",
+    "bytes": 46202878,
+    "sha256": "7b098e718cffed286dc532051c085d49e38cf7b2f33173a46e88b9b62350b7b5"
+  },
+  {
+    "path": "cfm_v1_cont1/run/evaluation_checkpoints/best_val_320000.pt",
+    "bytes": 46202878,
+    "sha256": "cd38fdfc7d358ed2de533e471cf017cf952836d8425b13a9a27311df09158cb6"
+  },
+  {
+    "path": "cfm_v1_cont1/run/evaluation_checkpoints/best_val_340000.pt",
+    "bytes": 46202878,
+    "sha256": "423e0215a7eb03900027a18373dc46e2cf27c181a3af6aa015cae1ad9cc42bbb"
+  },
+  {
+    "path": "cfm_v1_cont1/run/evaluation_checkpoints/best_val_360000.pt",
+    "bytes": 46202878,
+    "sha256": "2f3fcdf851a7027862cd87a60462c38131ea8ad1a2f2c66e5844a88f157e24fd"
+  },
+  {
+    "path": "cfm_v1_cont1/run/evaluation_checkpoints/best_val_415000.pt",
+    "bytes": 46202878,
+    "sha256": "b5ba6b80ec5de9da36a94d7a4a17bb04939984837187230c6e6ef63bb89e756e"
+  },
+  {
+    "path": "cfm_v1_cont1/run/evaluation_checkpoints/best_val_440000.pt",
+    "bytes": 46202878,
+    "sha256": "ef9317522e571062d02f2cd2a867ccd406c1eeb2cbb7a9212e931f5bf4f5192d"
+  },
+  {
+    "path": "cfm_v1_cont1/run/evaluation_checkpoints/best_val_480000.pt",
+    "bytes": 46202878,
+    "sha256": "e90b49e897a4ebe7c15e205a56616e99a71f6c1c6af7f638392362456efc8973"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "status": "diagnostic_only_not_user_24",
+  "targets": [
+    {
+      "target_id": "D00",
+      "grid_row": null,
+      "grid_col": null,
+      "s_target": 1.3038714308884918,
+      "a_target": -0.38407999999999987,
+      "Ex_target": 3.039920704064102,
+      "Ey_target": 4.463402782686522,
+      "density": "sparse",
+      "source": "existing continuation development panel"
+    },
+    {
+      "target_id": "D02",
+      "grid_row": null,
+      "grid_col": null,
+      "s_target": 1.3038714308884918,
+      "a_target": 0.35008000000000017,
+      "Ex_target": 4.388166257780136,
+      "Ey_target": 3.0920411243784534,
+      "density": "sparse",
+      "source": "existing continuation development panel"
+    },
+    {
+      "target_id": "D07",
+      "grid_row": null,
+      "grid_col": null,
+      "s_target": 1.9909458662878632,
+      "a_target": -0.036499999999999866,
+      "Ex_target": 7.1900337539290184,
+      "Ey_target": 7.4573182545954575,
+      "density": "dense",
+      "source": "existing continuation development panel"
+    },
+    {
+      "target_id": "D14",
+      "grid_row": null,
+      "grid_col": null,
+      "s_target": 2.024761775416078,
+      "a_target": 0.1466469820501704,
+      "Ex_target": 8.150548832864166,
+      "Ey_target": 7.038804105701725,
+      "density": "sparse",
+      "source": "existing continuation development panel"
+    }
+  ],
+  "source_sha256": "580368830f5dfc06720cb8ef9f57dc50b56b1395d5dec38ff153dcfc3deda295"
+}

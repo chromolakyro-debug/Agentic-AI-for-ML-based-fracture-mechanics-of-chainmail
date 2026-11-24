@@ -1,0 +1,111 @@
+{
+  "version": "cfm_v1_cont1",
+  "seed": 20261117,
+  "dataset": "cat_binary_dataset_curated_v1",
+  "initialization": "resume full v1 step280000 state",
+  "batch": 32,
+  "architecture": {
+    "channels": [
+      32,
+      64,
+      128,
+      192,
+      256
+    ],
+    "emb": 256
+  },
+  "model_parameters": 11529633,
+  "optimizer": {
+    "name": "AdamW",
+    "weight_decay": 0.01,
+    "foreach": true
+  },
+  "gradient_clip_norm": 1.0,
+  "ema_decay": 0.999,
+  "precision": "bfloat16 autocast, float32 loss/optimizer",
+  "augmentation": "uniform CCW rot90 in {0,1,2,3}; independent horizontal flip p=.5; rotate THEN flip; training only",
+  "normalization": {
+    "mean": [
+      1.3468542913757353,
+      -0.07920149220683437
+    ],
+    "std": [
+      0.6247915272590735,
+      0.18194416985386477
+    ],
+    "fit": "unaugmented new training set only; same z-score definition; user approved refit"
+  },
+  "sampling": {
+    "bins": [
+      8,
+      12
+    ],
+    "rule": "min(0.5+0.5*(1/sqrt(count))/mean(1/sqrt(count)),4), then normalize mean to1",
+    "order": "draw original train row with replacement, then augment; no class equalization, no augmented-density fitting",
+    "min_weight": 0.718521950283016,
+    "max_weight": 4.006454829782255,
+    "effective_sample_size": 5397.234005448686
+  },
+  "scheduler": {
+    "type": "update-based cosine warm restart",
+    "max_lr": 0.0002,
+    "min_lr": 3e-05,
+    "cycle_steps": 20000,
+    "cycle_multiplier": 1,
+    "peak_decay": 0.5,
+    "peak_floor": 0.0001,
+    "initial_warmup_updates": 200,
+    "reset_optimizer": false
+  },
+  "plateau": {
+    "initial_training_updates": 300000,
+    "evaluation_relative_threshold": 0.01,
+    "evaluation_patience": 2,
+    "stop_relative_threshold": 0.001,
+    "stop_patience": 4,
+    "epsilon": 1e-12,
+    "rule": "From 280k: compare complete20k cycle best to all prior best; four cycles <0.1%, then one additional full restart cycle; >=0.1% resets strict patience"
+  },
+  "validation": {
+    "interval": 5000,
+    "batch": 16,
+    "augmentation": false,
+    "noise_seed": 20261681,
+    "repeats": 1,
+    "selection": "EMA velocity MSE, all786 validation rows in frozen order",
+    "definition": "mean over samples and all224x224 pixels of (v_theta(x_t,t,c)-(x-epsilon))^2; x=2*binary-1; no other loss components; not FEM error"
+  },
+  "evaluation": {
+    "interval_cycles_after_activation": 1,
+    "targets": "evaluation/configs/targets.json",
+    "seeds": "evaluation/configs/seeds.json",
+    "selection": "best validation EMA so far; checkpoint/config hash reuse",
+    "full_final": true
+  },
+  "limits": {
+    "max_updates": 480000,
+    "max_training_seconds": 98857.60582680069,
+    "training_time_definition": "active train/validation/checkpoint wall time; excludes evaluation and setup"
+  },
+  "checkpoint_interval": 1000,
+  "log_interval": 100,
+  "cudnn_benchmark": true,
+  "allow_tf32": true,
+  "input_hashes": {
+    "metadata": "0907d2800a682c8ac04dc8a19df8aeb14196657c0fb43208add5faf42d245344",
+    "array": "09018df7a0901399133bb9c844f9d1c812d8314e4cbc01dc86fa746f63a373bd",
+    "data": "275495c8a4426459f80c07e8bbfeff8435c4468650380f377dfe26a1aeba033b",
+    "splits": "fd869e5db878458c2834b7bff720721c07d039caa7567a19fbd5d7766f85e8f6",
+    "model_code": "991dc309e39da2ec78d5e96d328b57a5ed9c3952a26e225cfe1da5db7796fe38"
+  },
+  "continuation": {
+    "source_checkpoint": "cfm_v1\\run\\checkpoints\\last.pt",
+    "sha256": "a5ddc96198ec117a43df37fe71a35db207368f872746b9d64752d07b39cfad00",
+    "start_step": 280000,
+    "prior_training_seconds": 55657.60582680069,
+    "max_additional_steps": 200000,
+    "max_additional_training_seconds": 43200,
+    "new_stop_counter_starts_at": 280000,
+    "old_decisions_preserved": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "step": 165000,
+  "parameters": 11529633,
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "torch": "2.1.2+cu121",
+  "cuda": "12.1",
+  "cudnn": 8801,
+  "checkpoint_sha256": "7dde6711cf046b7fd77741319710e86a798f5e46c13f58e995c15110298b5df7",
+  "training_augmentation": "none; original training images and physical Ex/Ey unchanged; unused D4 RNG draws retained for pairing with CFM v1"
+}

@@ -1,0 +1,23 @@
+{
+  "reference_thread": {
+    "title": "CFM v0-v1",
+    "id": "01a1ddda-30fc-72f0-9115-a1a1823265f7"
+  },
+  "reference_config_sha256": "45123cf28d4c57a03c1325b3dfb936e8905552179a9a60a005ba2cfdf1a41cb3",
+  "reference_train_code_sha256": "862142602aa3c13f95f3372aa956baa930a7e72d489ef977f486db0014870450",
+  "changed_fields": [
+    "version",
+    "augmentation",
+    "sampling.order"
+  ],
+  "intervention": "Disable training D4 pixel transformations and Ex/Ey swaps only",
+  "random_pairing": "Same initialization seed and RNG draws, including discarded augmentation draws; preserve sample/noise/time streams. cuDNN benchmark remains enabled as in v1; bitwise historical replay is not claimed.",
+  "budget": "Use final v1 maximum 300000 updates / 64800 active seconds from the outset; same plateau rule can select a different stopping step.",
+  "comparisons": "Same-step validation curves and shared evaluation targets/seeds; separately report each run selected by identical early-stopping policy. Single paired training seed, not multi-seed statistical evidence.",
+  "checkpoint_retention": "First adjacent validation absolute relative change <1% activates retention; save only at global step multiples of 20000 at or after activation. last every 1000; best by fixed EMA validation only",
+  "current_png_array_metadata_check": {
+    "status": "passed",
+    "count": 7857
+  },
+  "untouched_test": true
+}

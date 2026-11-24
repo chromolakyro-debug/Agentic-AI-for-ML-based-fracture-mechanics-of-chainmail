@@ -1,0 +1,11 @@
+{
+  "step": 280000,
+  "best_step": 280000,
+  "best_val_mse": 0.09608178820849678,
+  "training_seconds": 55657.77645710064,
+  "reason": "convergence_criterion",
+  "eval_active": true,
+  "restart_count": 13,
+  "samples_seen": 8960000,
+  "equivalent_epochs": 1425.6165473349245
+}

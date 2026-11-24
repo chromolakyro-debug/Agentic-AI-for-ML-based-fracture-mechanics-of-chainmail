@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "source_count": 8000,
+  "retained": 7857,
+  "deleted": 143,
+  "source_fine_classes": 64,
+  "keep_fine_classes": 51,
+  "delete_fine_classes": 13,
+  "class_counts": {
+    "01": 750,
+    "02": 1500,
+    "03": 750,
+    "04": 750,
+    "05": 759,
+    "06": 766,
+    "07": 1500,
+    "08": 1082
+  },
+  "all_original_samples_exactly_one_action": true,
+  "no_per_image_classification": true,
+  "all_retained_file_sha256_equal": true,
+  "all_pixels_shape_phase_equal": true,
+  "all_124_original_metadata_fields_exactly_preserved": true,
+  "all_Ex_Ey_sa_values_exactly_preserved": true,
+  "unchanged_normalization": true,
+  "all_active_references_valid": true,
+  "no_deleted_sample_in_active_index_or_split": true,
+  "new_ids_unique_and_class_local_numbers_contiguous": true,
+  "splits": {
+    "counts": {
+      "train": 6285,
+      "validation": 786,
+      "test": 786
+    },
+    "disjoint": true,
+    "class_stratified": true,
+    "migrated_from_old": 2653,
+    "filter_only_criterion": "Superseded by explicit user clarification; old membership archived separately"
+  },
+  "original_images_preserved": 8000,
+  "original_other_files_hash_unchanged": 365,
+  "loader_code_changes": [
+    {
+      "path": "cfm_v0/train.py",
+      "before": "6a04a0df244b3814354d808098b3c41246010cc45d1595a9299c656ad8ddcf05",
+      "after": "f99a07217c396da9b8ccdf28efc88960dc4affc9a03e20d054761617a9c43851",
+      "reason": "optional dataset/run path arguments to existing loader only"
+    }
+  ],
+  "no_FEM_recalculation": true,
+  "no_training": true,
+  "elapsed_seconds": 38.61343460017815
+}

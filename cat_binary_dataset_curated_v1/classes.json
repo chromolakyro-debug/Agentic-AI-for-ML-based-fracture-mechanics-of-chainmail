@@ -1,0 +1,87 @@
+{
+  "classes": [
+    {
+      "group_id": "01",
+      "group_name_zh": "写实点画",
+      "group_name_en": "Realistic Stippling",
+      "group_label": "realistic_stippling",
+      "directory": "images/01_realistic_stippling",
+      "class_label": 0,
+      "count": 750
+    },
+    {
+      "group_id": "02",
+      "group_name_zh": "写实笔绘",
+      "group_name_en": "Realistic Ink Drawing",
+      "group_label": "realistic_ink_drawing",
+      "directory": "images/02_realistic_ink_drawing",
+      "class_label": 1,
+      "count": 1500
+    },
+    {
+      "group_id": "03",
+      "group_name_zh": "几何三角",
+      "group_name_en": "Triangular Geometry",
+      "group_label": "triangular_geometry",
+      "directory": "images/03_triangular_geometry",
+      "class_label": 2,
+      "count": 750
+    },
+    {
+      "group_id": "04",
+      "group_name_zh": "几何破碎",
+      "group_name_en": "Fragmented Geometry",
+      "group_label": "fragmented_geometry",
+      "directory": "images/04_fragmented_geometry",
+      "class_label": 3,
+      "count": 750
+    },
+    {
+      "group_id": "05",
+      "group_name_zh": "像素线描",
+      "group_name_en": "Pixel Line Art",
+      "group_label": "pixel_line_art",
+      "directory": "images/05_pixel_line_art",
+      "class_label": 4,
+      "count": 759
+    },
+    {
+      "group_id": "06",
+      "group_name_zh": "像素实心",
+      "group_name_en": "Solid Pixel Art",
+      "group_label": "solid_pixel_art",
+      "directory": "images/06_solid_pixel_art",
+      "class_label": 5,
+      "count": 766
+    },
+    {
+      "group_id": "07",
+      "group_name_zh": "卡通",
+      "group_name_en": "Cartoon",
+      "group_label": "cartoon",
+      "directory": "images/07_cartoon",
+      "class_label": 6,
+      "count": 1500
+    },
+    {
+      "group_id": "08",
+      "group_name_zh": "剪影",
+      "group_name_en": "Silhouette",
+      "group_label": "silhouette",
+      "directory": "images/08_silhouette",
+      "class_label": 7,
+      "count": 1082
+    }
+  ],
+  "counts": {
+    "01": 750,
+    "02": 1500,
+    "03": 750,
+    "04": 750,
+    "05": 759,
+    "06": 766,
+    "07": 1500,
+    "08": 1082
+  },
+  "label_encoding": "class_labels=group_id-1 (0..7); group_id=01..08; global new_id=group_id + underscore + class-local ID"
+}

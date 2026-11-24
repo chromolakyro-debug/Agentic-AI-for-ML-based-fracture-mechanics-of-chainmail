@@ -1,0 +1,33 @@
+{
+  "adapter": "adapters.dataset:NumpyMetadataDataset",
+  "version": "curated_eight_classes_v1_7857",
+  "directory": "cat_binary_dataset_curated_v1",
+  "metadata": "metadata.csv",
+  "array": "dataset.npy",
+  "labels": "cat_binary_dataset_curated_v1/data.npz",
+  "splits": "cat_binary_dataset_curated_v1/splits.json",
+  "training_index_key": "train",
+  "id_field": "new_id",
+  "image_prefix": "images",
+  "image_field": "filename",
+  "Ex_field": "Ex_app",
+  "Ey_field": "Ey_app",
+  "class_field": "group_name_en",
+  "pixel_hash_field": "sha256_pixels",
+  "id_numeric_prefix": null,
+  "dedup_field_priority": [
+    [
+      "source",
+      "source_id"
+    ],
+    [
+      "source",
+      "source_seed"
+    ],
+    [
+      "source",
+      "seed"
+    ]
+  ],
+  "npz_id_key": "sample_ids"
+}

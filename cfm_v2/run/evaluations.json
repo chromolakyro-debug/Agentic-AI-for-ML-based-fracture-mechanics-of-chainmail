@@ -1,0 +1,52 @@
+[
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 100000,
+    "checkpoint_sha256": "eac77418bd9166da45bbfbc15019e0b5d42f4079622b4c3f3b50ea37dd02d8d5",
+    "validation_mse": 0.09472060871829513,
+    "config": "evaluation\\configs\\cfm_v2_step_100000.json",
+    "output": "evaluation/runs/cfm_v2_step_100000",
+    "seconds": 174.47377309994772,
+    "utc": "2026-11-18T07:22:35.254926+00:00"
+  },
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 120000,
+    "checkpoint_sha256": "633dbef404ecbf9db2367f712368de5d8c18fce862275977a5b543f14b78df28",
+    "validation_mse": 0.09456076556887791,
+    "config": "evaluation\\configs\\cfm_v2_step_120000.json",
+    "output": "evaluation/runs/cfm_v2_step_120000",
+    "seconds": 166.11646649986506,
+    "utc": "2026-11-18T08:31:09.577742+00:00"
+  },
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 125000,
+    "checkpoint_sha256": "9d0dd22d053fbb4eccbddfc6a89ccf37d3282739a7ed928069bd6405d875c249",
+    "validation_mse": 0.09456020066604663,
+    "config": "evaluation\\configs\\cfm_v2_step_125000.json",
+    "output": "evaluation/runs/cfm_v2_step_125000",
+    "seconds": 166.33538059983402,
+    "utc": "2026-11-18T09:39:49.052603+00:00"
+  },
+  {
+    "reason": "periodic_after_stage_A",
+    "checkpoint_step": 150000,
+    "checkpoint_sha256": "9dba1c377644f9d714c1a9b06d668c56f389c0afc2e984ff8bbd6b8eb0a86058",
+    "validation_mse": 0.09430691535387938,
+    "config": "evaluation\\configs\\cfm_v2_step_150000.json",
+    "output": "evaluation/runs/cfm_v2_step_150000",
+    "seconds": 170.86765060015023,
+    "utc": "2026-11-18T10:48:27.678435+00:00"
+  },
+  {
+    "reason": "final_best_val_mse",
+    "checkpoint_step": 165000,
+    "checkpoint_sha256": "7dde6711cf046b7fd77741319710e86a798f5e46c13f58e995c15110298b5df7",
+    "validation_mse": 0.09399051205954176,
+    "config": "evaluation\\configs\\cfm_v2_step_165000.json",
+    "output": "evaluation/runs/cfm_v2_step_165000",
+    "seconds": 167.1389235998504,
+    "utc": "2026-11-18T11:57:03.045341+00:00"
+  }
+]

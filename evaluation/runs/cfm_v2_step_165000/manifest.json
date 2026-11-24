@@ -1,0 +1,600 @@
+{
+  "identity": "200f028e02b3b07fd2f4faa6de172aaba9c222b559d7522d57f56081246e763b",
+  "created_utc": "2026-11-18T11:54:19.447763+00:00",
+  "diagnostic_only": false,
+  "inputs": {
+    "config": {
+      "schema_version": 1,
+      "dataset": {
+        "adapter": "adapters.dataset:NumpyMetadataDataset",
+        "version": "curated_eight_classes_v1_7857",
+        "directory": "cat_binary_dataset_curated_v1",
+        "metadata": "metadata.csv",
+        "array": "dataset.npy",
+        "labels": "cfm_v2/run/data.npz",
+        "splits": "cfm_v2/run/splits.json",
+        "training_index_key": "train",
+        "id_field": "new_id",
+        "image_prefix": "images",
+        "image_field": "filename",
+        "Ex_field": "Ex_app",
+        "Ey_field": "Ey_app",
+        "class_field": "group_name_en",
+        "pixel_hash_field": "sha256_pixels",
+        "id_numeric_prefix": null,
+        "dedup_field_priority": [
+          [
+            "source",
+            "source_id"
+          ],
+          [
+            "source",
+            "source_seed"
+          ],
+          [
+            "source",
+            "seed"
+          ]
+        ],
+        "npz_id_key": "sample_ids"
+      },
+      "targets": "evaluation/configs/targets.json",
+      "diagnostic_targets": "evaluation/configs/diagnostic_targets.json",
+      "grid": "evaluation/configs/grid.json",
+      "seeds": "evaluation/configs/seeds.json",
+      "model": {
+        "adapter": "adapters.cfm:CFMAdapter",
+        "module_file": "cfm_v0/model.py",
+        "class_name": "ConditionalUNet",
+        "architecture": {
+          "channels": [
+            32,
+            64,
+            128,
+            192,
+            256
+          ],
+          "emb": 256
+        },
+        "weights_key": "ema",
+        "dataset_binding": {
+          "metadata": "0907d2800a682c8ac04dc8a19df8aeb14196657c0fb43208add5faf42d245344",
+          "array": "09018df7a0901399133bb9c844f9d1c812d8314e4cbc01dc86fa746f63a373bd",
+          "labels": "275495c8a4426459f80c07e8bbfeff8435c4468650380f377dfe26a1aeba033b",
+          "splits": "fd869e5db878458c2834b7bff720721c07d039caa7567a19fbd5d7766f85e8f6"
+        },
+        "normalization": {
+          "mean": [
+            1.3468542913757353,
+            -0.07920149220683437
+          ],
+          "std": [
+            0.6247915272590735,
+            0.18194416985386477
+          ]
+        },
+        "extra_conditioning": {},
+        "checkpoint": "cfm_v2/run/evaluation_checkpoints/best_val_165000.pt",
+        "checkpoint_sha256": "7dde6711cf046b7fd77741319710e86a798f5e46c13f58e995c15110298b5df7"
+      },
+      "sampling": {
+        "method": "midpoint",
+        "steps": 64,
+        "shape": [
+          224,
+          224
+        ],
+        "precision": "bfloat16",
+        "state_dtype": "float32",
+        "device": "cuda",
+        "batch_size": 10,
+        "noise_generator": "torch_cuda_generator_per_seed",
+        "cpu_threads": 4,
+        "global_seed": 20261117,
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "allow_tf32": true
+      },
+      "preprocessing": {
+        "threshold": 0.0,
+        "comparison": ">=",
+        "raw_representation": "x=2*binary-1",
+        "black_hard": 0,
+        "white_soft": 1,
+        "resize": false,
+        "flip": false,
+        "raw_dtype": "float32",
+        "binary_dtype": "uint8",
+        "image_columns": "physical x increasing right",
+        "image_rows": "physical y decreasing down; FEM performs flipud"
+      },
+      "fem": {
+        "adapter": "adapters.fem:OriginalFEM",
+        "module_file": "mechanics.py",
+        "workers": 8,
+        "preconditioner_seed": 20261117,
+        "parameters": {
+          "shape": [
+            224,
+            224
+          ],
+          "soft_modulus": 1.0,
+          "hard_modulus": 10.0,
+          "poisson": 0.3,
+          "width": 40.0,
+          "height": 40.0,
+          "thickness": 2.0,
+          "strain": 0.001,
+          "solver": "amg",
+          "tolerance": 1e-09,
+          "max_iterations": 1200
+        }
+      },
+      "retrieval": {
+        "top_k": 10,
+        "distance": {
+          "name": "euclidean_Ex_Ey_fixed_scales",
+          "scales": [
+            1.0,
+            1.0
+          ],
+          "allow_axis_swap": true,
+          "scale_source": "fixed original FEM units, no fitting"
+        },
+        "source_dedup": true,
+        "display_orientation": "original_unrotated"
+      },
+      "tolerances": {
+        "Ex_relative": 0.05,
+        "Ey_relative": 0.05,
+        "s": 0.04879016416943204,
+        "a": 0.09531017980432493,
+        "relative_denominator_floor": 1e-12
+      },
+      "statistics": {
+        "variance_ddof": 1
+      },
+      "cache": "evaluation/cache",
+      "run_id": "cfm_v2_step_165000"
+    },
+    "dataset_identity": "3f65f73b23628a33a152be7e11fc8b4fd402c0e42ad3dcd037d576bb944e1972",
+    "training_identity": "e9cc221230bbbf63d8e928980b5cc42ac81ff0a12a4385a193ca9865a6092502",
+    "targets": {
+      "status": "frozen",
+      "grid_sha256": "6c64eb1df255965f13a4059714286e7ae36d42b44f744a0564070f54ae51e0ad",
+      "selection_source_sha256": "f8ae80ffbf67e980bff76739cb1a985b73a20b1a0ac7d256f2a79652af73b99e",
+      "selected_cells": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ]
+      ],
+      "targets": [
+        {
+          "target_id": "T01",
+          "grid_row": 1,
+          "grid_col": 3,
+          "s_target": 0.9594104554141858,
+          "a_target": -0.922425909569004,
+          "Ex_target": 1.6457521283903322,
+          "Ey_target": 4.139700367419945
+        },
+        {
+          "target_id": "T02",
+          "grid_row": 1,
+          "grid_col": 4,
+          "s_target": 1.34317463757986,
+          "a_target": -0.922425909569004,
+          "Ex_target": 2.415633768738792,
+          "Ey_target": 6.076249167473807
+        },
+        {
+          "target_id": "T03",
+          "grid_row": 2,
+          "grid_col": 2,
+          "s_target": 0.5756462732485115,
+          "a_target": -0.5534555457414024,
+          "Ex_target": 1.3483997249264843,
+          "Ey_target": 2.345207879911715
+        },
+        {
+          "target_id": "T04",
+          "grid_row": 2,
+          "grid_col": 3,
+          "s_target": 0.9594104554141858,
+          "a_target": -0.5534555457414024,
+          "Ex_target": 1.9791801287088937,
+          "Ey_target": 3.4422944085559215
+        },
+        {
+          "target_id": "T05",
+          "grid_row": 2,
+          "grid_col": 4,
+          "s_target": 1.34317463757986,
+          "a_target": -0.5534555457414024,
+          "Ex_target": 2.905039143411068,
+          "Ey_target": 5.052597211817927
+        },
+        {
+          "target_id": "T06",
+          "grid_row": 2,
+          "grid_col": 5,
+          "s_target": 1.7269388197455344,
+          "a_target": -0.5534555457414024,
+          "Ex_target": 4.26401432711221,
+          "Ey_target": 7.416198487095664
+        },
+        {
+          "target_id": "T07",
+          "grid_row": 3,
+          "grid_col": 1,
+          "s_target": 0.19188209108283716,
+          "a_target": -0.1844851819138008,
+          "Ex_target": 1.1047725759043283,
+          "Ey_target": 1.3285985728063354
+        },
+        {
+          "target_id": "T08",
+          "grid_row": 3,
+          "grid_col": 2,
+          "s_target": 0.5756462732485115,
+          "a_target": -0.1844851819138008,
+          "Ex_target": 1.6215843778013204,
+          "Ey_target": 1.9501160121288663
+        },
+        {
+          "target_id": "T09",
+          "grid_row": 3,
+          "grid_col": 3,
+          "s_target": 0.9594104554141858,
+          "a_target": -0.1844851819138008,
+          "Ex_target": 2.3801603621241676,
+          "Ey_target": 2.862378854380821
+        },
+        {
+          "target_id": "T10",
+          "grid_row": 3,
+          "grid_col": 4,
+          "s_target": 1.34317463757986,
+          "a_target": -0.1844851819138008,
+          "Ex_target": 3.493597636348933,
+          "Ey_target": 4.201397586117068
+        },
+        {
+          "target_id": "T11",
+          "grid_row": 3,
+          "grid_col": 5,
+          "s_target": 1.7269388197455344,
+          "a_target": -0.1844851819138008,
+          "Ex_target": 5.127900051999157,
+          "Ey_target": 6.166808299891763
+        },
+        {
+          "target_id": "T12",
+          "grid_row": 3,
+          "grid_col": 6,
+          "s_target": 2.110703001911209,
+          "a_target": -0.1844851819138008,
+          "Ex_target": 7.526727940763537,
+          "Ey_target": 9.051636706146832
+        },
+        {
+          "target_id": "T13",
+          "grid_row": 4,
+          "grid_col": 1,
+          "s_target": 0.19188209108283716,
+          "a_target": 0.1844851819138008,
+          "Ex_target": 1.3285985728063354,
+          "Ey_target": 1.1047725759043283
+        },
+        {
+          "target_id": "T14",
+          "grid_row": 4,
+          "grid_col": 2,
+          "s_target": 0.5756462732485115,
+          "a_target": 0.1844851819138008,
+          "Ex_target": 1.9501160121288663,
+          "Ey_target": 1.6215843778013204
+        },
+        {
+          "target_id": "T15",
+          "grid_row": 4,
+          "grid_col": 3,
+          "s_target": 0.9594104554141858,
+          "a_target": 0.1844851819138008,
+          "Ex_target": 2.862378854380821,
+          "Ey_target": 2.3801603621241676
+        },
+        {
+          "target_id": "T16",
+          "grid_row": 4,
+          "grid_col": 4,
+          "s_target": 1.34317463757986,
+          "a_target": 0.1844851819138008,
+          "Ex_target": 4.201397586117068,
+          "Ey_target": 3.493597636348933
+        },
+        {
+          "target_id": "T17",
+          "grid_row": 4,
+          "grid_col": 5,
+          "s_target": 1.7269388197455344,
+          "a_target": 0.1844851819138008,
+          "Ex_target": 6.166808299891763,
+          "Ey_target": 5.127900051999157
+        },
+        {
+          "target_id": "T18",
+          "grid_row": 4,
+          "grid_col": 6,
+          "s_target": 2.110703001911209,
+          "a_target": 0.1844851819138008,
+          "Ex_target": 9.051636706146832,
+          "Ey_target": 7.526727940763537
+        },
+        {
+          "target_id": "T19",
+          "grid_row": 5,
+          "grid_col": 2,
+          "s_target": 0.5756462732485115,
+          "a_target": 0.5534555457414024,
+          "Ex_target": 2.345207879911715,
+          "Ey_target": 1.3483997249264843
+        },
+        {
+          "target_id": "T20",
+          "grid_row": 5,
+          "grid_col": 3,
+          "s_target": 0.9594104554141858,
+          "a_target": 0.5534555457414024,
+          "Ex_target": 3.4422944085559215,
+          "Ey_target": 1.9791801287088937
+        },
+        {
+          "target_id": "T21",
+          "grid_row": 5,
+          "grid_col": 4,
+          "s_target": 1.34317463757986,
+          "a_target": 0.5534555457414024,
+          "Ex_target": 5.052597211817927,
+          "Ey_target": 2.905039143411068
+        },
+        {
+          "target_id": "T22",
+          "grid_row": 5,
+          "grid_col": 5,
+          "s_target": 1.7269388197455344,
+          "a_target": 0.5534555457414024,
+          "Ex_target": 7.416198487095664,
+          "Ey_target": 4.26401432711221
+        },
+        {
+          "target_id": "T23",
+          "grid_row": 6,
+          "grid_col": 3,
+          "s_target": 0.9594104554141858,
+          "a_target": 0.922425909569004,
+          "Ex_target": 4.139700367419945,
+          "Ey_target": 1.6457521283903322
+        },
+        {
+          "target_id": "T24",
+          "grid_row": 6,
+          "grid_col": 4,
+          "s_target": 1.34317463757986,
+          "a_target": 0.922425909569004,
+          "Ex_target": 6.076249167473807,
+          "Ey_target": 2.415633768738792
+        }
+      ]
+    },
+    "seeds": [
+      730000,
+      730001,
+      730002,
+      730003,
+      730004,
+      730005,
+      730006,
+      730007,
+      730008,
+      730009
+    ],
+    "grid": {
+      "version": "old_equal_width_6x6",
+      "source": "analysis\\curated_augmented_distribution\\grid_v1_equal_width\\s_a\\counts.json",
+      "source_sha256": "fb8a405c7ae330178d8137feecfd83dccf628320d9b1ac7e6ba7ad46b000ff97",
+      "s_edges": [
+        0.0,
+        0.3837641821656743,
+        0.7675283643313486,
+        1.151292546497023,
+        1.5350567286626973,
+        1.9188209108283716,
+        2.302585092994046
+      ],
+      "a_edges": [
+        -1.1069110914828049,
+        -0.7379407276552032,
+        -0.3689703638276016,
+        0.0,
+        0.3689703638276016,
+        0.7379407276552032,
+        1.1069110914828049
+      ],
+      "row_convention": "one based; row 1 at bottom (smallest a); column 1 at left (smallest s)",
+      "expected_targets": 24,
+      "esoft": 1.0,
+      "formula": "s=0.5*(log(Ex/Esoft)+log(Ey/Esoft)); a=log(Ex/Ey)",
+      "units": "Original FEM modulus units; Esoft=1, Ehard=10; not an independently calibrated physical unit"
+    }
+  },
+  "dataset_audit": {
+    "status": "passed",
+    "samples": 7857,
+    "training": 6285,
+    "unique_training_sources": 6285,
+    "identity": "3f65f73b23628a33a152be7e11fc8b4fd402c0e42ad3dcd037d576bb944e1972",
+    "files": {
+      "metadata": "0907d2800a682c8ac04dc8a19df8aeb14196657c0fb43208add5faf42d245344",
+      "array": "09018df7a0901399133bb9c844f9d1c812d8314e4cbc01dc86fa746f63a373bd",
+      "labels": "275495c8a4426459f80c07e8bbfeff8435c4468650380f377dfe26a1aeba033b",
+      "splits": "fd869e5db878458c2834b7bff720721c07d039caa7567a19fbd5d7766f85e8f6"
+    }
+  },
+  "checkpoint": "cfm_v2/run/evaluation_checkpoints/best_val_165000.pt",
+  "checkpoint_sha256": "7dde6711cf046b7fd77741319710e86a798f5e46c13f58e995c15110298b5df7",
+  "platform": "Windows-10-10.0.26100-SP0",
+  "python": "3.11.4 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 13:38:37) [MSC v.1916 64 bit (AMD64)]",
+  "note": "Retrieval uses axis swap even though legacy training augmentation was none. No new training.",
+  "code_versions": [
+    {
+      "utc": "2026-11-18T11:54:19.600762+00:00",
+      "code_sha256": {
+        "evaluation/build_audit.py": "d024b7a3e82e86f6ccf4bd90408b1b10121a4f10f3b2704b530697ecf7b6e104",
+        "evaluation/cache.py": "5e7a82dc8d87270f2fe96b833d7000e3a7758965c2ded04cfedfea681d11f45d",
+        "evaluation/compare.py": "7aedda96c2a26d2fea653ede77e4df1f4eb5189bdeef4c1d19d9cbe47a1ef33c",
+        "evaluation/pipeline.py": "ccf0141ec939e9a9d3e98dbcbb9581013e09fee7f7fcd097f85b3b611dd53c86",
+        "evaluation/reporting.py": "4e3eb7474d0722e8dfae737487880ee5109cb34a2261c5e260191353d902c87e",
+        "evaluation/retrieval.py": "02f7fcd97f0122af8b9a0bbca20f976544fbb1d887e919f0466f56363ab94614",
+        "evaluation/run.py": "b38068e95fd9d0927b7400e53ef726f0eac6e396198b059051f31a32c7d6127c",
+        "evaluation/setup_configs.py": "ee37306412bfd79a5106330b9e6a4bc23c3765d365fccd833c2aa00f4384d3f1",
+        "evaluation/targets.py": "0cb28bb9030be7c54d4a01fca24a495de51395056a5b2b980deec053409b98d1",
+        "evaluation/tests_core.py": "58d8b6c66f08c38b290506d6abbfa60a0de70d2ac7438358cc1416daf1b7fd2c",
+        "evaluation/utils.py": "40803c78cce8a0c1838a0696d5afebf887dc98d09b3347a7c0ff0c9bdcbf2e8e",
+        "evaluation/validate_html.py": "14b7d393d7c2ce09ad19804bfc33b2773d7deac9c72ce499f4d3bb8c3792b13e",
+        "evaluation/validate_physics.py": "3741a42ac19ba997063d29a8a545e14939c62f97f6d20daab9b39c21f0dc1021",
+        "evaluation/validate_runs.py": "9be1ed50e4f00fc2006b7c1bb14ccbdf0a299c5ce48f1de852e9bc91bb263c19",
+        "evaluation/verify_ai_archive.py": "6f27375b6633b1b0f2952fd2c647a48f6bb6bbdc758906509ddfaf8f656b2e84",
+        "evaluation/verify_report.py": "c9d6cf5fe51fcd218aa0141033901dd4fddda547056bc0f5ff599aa6f2b25e69",
+        "evaluation/adapters/cfm.py": "a34b7e9bbd318e879d8e8678b3485d472590febaacbd76c7fbcc0e0a696ec3f2",
+        "evaluation/adapters/dataset.py": "9f686c952f40ca19482414ad9f33904cffe864fcf4a6ef18338212755c0e13f3",
+        "evaluation/adapters/fem.py": "18570a5bb8c14f937dc39d72f119df6aac561c8c636ae785a070b500beaa394c",
+        "evaluation/adapters/__init__.py": "594c879ff9c562b20896a61a4eeaca1106775c06ba95989131122e92810dfe49",
+        "evaluation/validation/audit_extracted/build_audit.py": "d024b7a3e82e86f6ccf4bd90408b1b10121a4f10f3b2704b530697ecf7b6e104",
+        "evaluation/validation/audit_extracted/cache.py": "5e7a82dc8d87270f2fe96b833d7000e3a7758965c2ded04cfedfea681d11f45d",
+        "evaluation/validation/audit_extracted/compare.py": "7aedda96c2a26d2fea653ede77e4df1f4eb5189bdeef4c1d19d9cbe47a1ef33c",
+        "evaluation/validation/audit_extracted/pipeline.py": "ccf0141ec939e9a9d3e98dbcbb9581013e09fee7f7fcd097f85b3b611dd53c86",
+        "evaluation/validation/audit_extracted/reporting.py": "4e3eb7474d0722e8dfae737487880ee5109cb34a2261c5e260191353d902c87e",
+        "evaluation/validation/audit_extracted/retrieval.py": "02f7fcd97f0122af8b9a0bbca20f976544fbb1d887e919f0466f56363ab94614",
+        "evaluation/validation/audit_extracted/run.py": "b38068e95fd9d0927b7400e53ef726f0eac6e396198b059051f31a32c7d6127c",
+        "evaluation/validation/audit_extracted/setup_configs.py": "ee37306412bfd79a5106330b9e6a4bc23c3765d365fccd833c2aa00f4384d3f1",
+        "evaluation/validation/audit_extracted/targets.py": "0cb28bb9030be7c54d4a01fca24a495de51395056a5b2b980deec053409b98d1",
+        "evaluation/validation/audit_extracted/tests_core.py": "58d8b6c66f08c38b290506d6abbfa60a0de70d2ac7438358cc1416daf1b7fd2c",
+        "evaluation/validation/audit_extracted/utils.py": "40803c78cce8a0c1838a0696d5afebf887dc98d09b3347a7c0ff0c9bdcbf2e8e",
+        "evaluation/validation/audit_extracted/validate_html.py": "14b7d393d7c2ce09ad19804bfc33b2773d7deac9c72ce499f4d3bb8c3792b13e",
+        "evaluation/validation/audit_extracted/validate_physics.py": "3741a42ac19ba997063d29a8a545e14939c62f97f6d20daab9b39c21f0dc1021",
+        "evaluation/validation/audit_extracted/validate_runs.py": "9be1ed50e4f00fc2006b7c1bb14ccbdf0a299c5ce48f1de852e9bc91bb263c19",
+        "evaluation/validation/audit_extracted/verify_ai_archive.py": "6f27375b6633b1b0f2952fd2c647a48f6bb6bbdc758906509ddfaf8f656b2e84",
+        "evaluation/validation/audit_extracted/verify_report.py": "c9d6cf5fe51fcd218aa0141033901dd4fddda547056bc0f5ff599aa6f2b25e69",
+        "evaluation/validation/audit_extracted/adapters/cfm.py": "a34b7e9bbd318e879d8e8678b3485d472590febaacbd76c7fbcc0e0a696ec3f2",
+        "evaluation/validation/audit_extracted/adapters/dataset.py": "9f686c952f40ca19482414ad9f33904cffe864fcf4a6ef18338212755c0e13f3",
+        "evaluation/validation/audit_extracted/adapters/fem.py": "18570a5bb8c14f937dc39d72f119df6aac561c8c636ae785a070b500beaa394c",
+        "evaluation/validation/audit_extracted/adapters/__init__.py": "594c879ff9c562b20896a61a4eeaca1106775c06ba95989131122e92810dfe49",
+        "mechanics.py": "69a96de6b3c34c82db7a057b80f72948407906c9c98714e64ced122547656bb1",
+        "cfm_v0/model.py": "991dc309e39da2ec78d5e96d328b57a5ed9c3952a26e225cfe1da5db7796fe38"
+      }
+    }
+  ],
+  "library_versions": {
+    "numpy": "1.24.3",
+    "scipy": "1.10.1",
+    "pyamg": "5.0.1",
+    "torch": "2.1.2+cu121",
+    "Pillow": "9.4.0",
+    "matplotlib": "3.7.1",
+    "threadpoolctl": "3.5.0"
+  }
+}

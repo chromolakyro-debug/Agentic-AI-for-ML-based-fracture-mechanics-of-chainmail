@@ -1,0 +1,22 @@
+[
+  {
+    "path": "cat_binary_dataset_curated_v1/dataset.npy",
+    "bytes": 394232960,
+    "sha256": "09018df7a0901399133bb9c844f9d1c812d8314e4cbc01dc86fa746f63a373bd"
+  },
+  {
+    "path": "cat_binary_dataset_curated_v1/data.npz",
+    "bytes": 3335192,
+    "sha256": "c885bcd1fbbde7ace71491adeafa96c7385d05e7fc4bd3a395c30bfdd6c29eaa"
+  },
+  {
+    "path": "cat_binary_dataset_curated_v1/metadata.jsonl",
+    "bytes": 55681749,
+    "sha256": "dde92f6d81e6f80c741889fac5564d68fd9c95879171c2571da5b16bf07723fb"
+  },
+  {
+    "path": "cfm_v2/run/evaluation_checkpoints/best_val_165000.pt",
+    "bytes": 46202494,
+    "sha256": "7dde6711cf046b7fd77741319710e86a798f5e46c13f58e995c15110298b5df7"
+  }
+]

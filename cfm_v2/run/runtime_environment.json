@@ -1,0 +1,12 @@
+{
+  "python": "3.11.4 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 13:38:37) [MSC v.1916 64 bit (AMD64)]",
+  "executable": "C:\\Workspace\\Cat shaped mechanical metamaterials\\cfm_v0\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-10-10.0.26100-SP0",
+  "torch": "2.1.2+cu121",
+  "numpy": "1.24.3",
+  "cuda": "12.1",
+  "cudnn": 8801,
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "source_snapshot_status": "verified",
+  "v1_training_source_unchanged": true
+}

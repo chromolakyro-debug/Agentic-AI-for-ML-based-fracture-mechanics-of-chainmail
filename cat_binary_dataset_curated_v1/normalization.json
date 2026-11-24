@@ -1,0 +1,22 @@
+{
+  "mean": [
+    1.3606831407862798,
+    -0.07714614234910423
+  ],
+  "std": [
+    0.6256737270125351,
+    0.18044273911112527
+  ],
+  "preserved_exact": true,
+  "source": "provenance/cfm_v0/data.npz",
+  "fit_population": "Original6400 CFM training samples, NOT the newly stratified training set",
+  "definitions": {
+    "s": "0.5*(log(Ex/Esoft)+log(Ey/Esoft))",
+    "a": "log(Ex/Ey)",
+    "Esoft": 1.0,
+    "Ehard": 10.0,
+    "black_value": 0,
+    "white_value": 1
+  },
+  "note": "User requested unchanged normalization. Some new validation/test samples were in original training; these frozen statistics and old checkpoints do not constitute a fresh unbiased holdout. New training sampler weights/support are not computed in this curation task."
+}

@@ -1,0 +1,15 @@
+{
+  "panels": 24,
+  "cards": 720,
+  "images": 720,
+  "images_loaded": true,
+  "rotated": true,
+  "mirrored": true,
+  "unchanged": true,
+  "reset": true,
+  "rated": true,
+  "passed": true,
+  "delivered_paths_verified": true,
+  "best_samples_verified": true,
+  "labels_match_128step_results": true
+}
