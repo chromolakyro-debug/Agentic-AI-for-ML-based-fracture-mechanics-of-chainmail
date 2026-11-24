@@ -3,12 +3,13 @@
 Virtual modules retain independent namespaces and linecache source text, so
 Windows multiprocessing and inspect-based FEM protocol fingerprints work.
 """
+import tempfile
 from pathlib import Path
 import ast
 import json
 
 ROOT=Path(__file__).resolve().parent
-WORK=Path("C:/Users/chrom/AppData/Local/Temp/binary-cat-augmentation")
+WORK=(Path(tempfile.gettempdir()) / 'binary-cat-augmentation')
 MODULES=("candidate_generation","mechanics","mechanics_selection","evaluate_mechanics",
          "release_workflow","targeted_candidates","style_candidates","augmentation_selection","augmentation_workflow")
 

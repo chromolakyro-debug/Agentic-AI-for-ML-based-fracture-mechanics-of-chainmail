@@ -1,4 +1,5 @@
 """Package reference-style expansion and previous reproducible stages together."""
+import tempfile
 from pathlib import Path
 import argparse
 import ast
@@ -7,7 +8,7 @@ import csv
 import json
 
 ROOT=Path(__file__).resolve().parent
-WORK=Path('C:/Users/chrom/AppData/Local/Temp/binary-cat-reference-expansion')
+WORK=(Path(tempfile.gettempdir()) / 'binary-cat-reference-expansion')
 
 
 def read_literal_bundle(path):

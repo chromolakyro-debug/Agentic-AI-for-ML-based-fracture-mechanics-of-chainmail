@@ -21,18 +21,18 @@
   },
   {
     "path": "assemble_augmented_generator.py",
-    "bytes": 12552,
-    "sha256": "6ebe03ea60b2b1735bbb15bdce4cc5a86413e48031a842cc57e68ae41c209723"
+    "bytes": 12749,
+    "sha256": "b87be6ba16f189a822b1d5f80ab42b923fe9c979c516145c6ba66c18e3ae5448"
   },
   {
     "path": "assemble_generator.py",
-    "bytes": 3173,
-    "sha256": "9d11ce114514d681d2c26de33fa0eb70bbc99341fb851c8183932c900aa0b17d"
+    "bytes": 3242,
+    "sha256": "51f54c8150d7c3e624cdb630d303c8f8f38c26bbbbd1fc861aea5298a837119f"
   },
   {
     "path": "assemble_reference_generator.py",
-    "bytes": 11629,
-    "sha256": "64c03786f5dcd687db112d6a8e5adf277c6b9e4182370e55708ec37aad2c8692"
+    "bytes": 11811,
+    "sha256": "b554a0699164283bc6d20b3bd818331d95c02b24eb00f238b38f7d9520a0765d"
   },
   {
     "path": "augmentation_selection.py",
@@ -71,8 +71,8 @@
   },
   {
     "path": "build_review_package.py",
-    "bytes": 37187,
-    "sha256": "786c2f599380c8b41f18d90e2bda26f0703134560b9ee0fdf9b37058ec959c21"
+    "bytes": 37680,
+    "sha256": "535a8fa2a214ab71af3ce264f15368b82622aa8926703b45fec56237c9c15dbc"
   },
   {
     "path": "candidate_generation.py",
@@ -1166,8 +1166,8 @@
   },
   {
     "path": "legacy_candidates.py",
-    "bytes": 9621,
-    "sha256": "24efdd3aec9ee5b9d08ba72b16cce4434051772239f8e0ed5238d56d149c320c"
+    "bytes": 9804,
+    "sha256": "30af97a1353c7b78be35324d25b2f084ce705182d7b3eefca98df521c925cfdd"
   },
   {
     "path": "mechanics.py",

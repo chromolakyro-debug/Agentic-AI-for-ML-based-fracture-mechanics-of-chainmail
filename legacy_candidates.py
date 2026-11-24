@@ -14,14 +14,15 @@ import json
 import sys
 from collections import Counter
 from dataclasses import asdict
+import tempfile
 from pathlib import Path
 
 import numpy as np
 
 import candidate_generation as current
 
-DEFAULT_WORK = Path(r"C:\Users\chrom\AppData\Local\Temp\binary-cat-mechanics")
-DEFAULT_CACHE = Path(r"C:\Users\chrom\AppData\Local\Temp\binary-cat-v4\v5-full-1142031-b4")
+DEFAULT_WORK = (Path(tempfile.gettempdir()) / 'binary-cat-mechanics')
+DEFAULT_CACHE = (Path(tempfile.gettempdir()) / 'binary-cat-v4/v5-full-1142031-b4')
 REFRAME_SEED = 1142114
 REFRAME_VERSION = 1
 

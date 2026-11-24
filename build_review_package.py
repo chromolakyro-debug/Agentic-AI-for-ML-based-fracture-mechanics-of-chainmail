@@ -23,7 +23,7 @@ import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_WORK = Path('C:/Users/chrom/AppData/Local/Temp/binary-cat-reference-expansion')
+DEFAULT_WORK = (Path(tempfile.gettempdir()) / 'binary-cat-reference-expansion')
 COUNT = 8000
 BASE_COUNT = 1250
 DELIVERABLES = ('dataset.npy', 'metadata.csv', 'preview.png', 'quality_report.md',

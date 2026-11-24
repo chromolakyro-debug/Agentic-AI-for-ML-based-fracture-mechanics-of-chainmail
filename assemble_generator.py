@@ -1,10 +1,11 @@
 """Build the single readable generator script required by the release contract."""
+import tempfile
 from pathlib import Path
 import ast
 import json
 
 ROOT=Path(__file__).resolve().parent
-WORK=Path("C:/Users/chrom/AppData/Local/Temp/binary-cat-mechanics")
+WORK=(Path(tempfile.gettempdir()) / 'binary-cat-mechanics')
 
 
 def clean_module(path):
@@ -51,7 +52,7 @@ selection = sys.modules[__name__]
         path=WORK/f"{mode}_visual_review.json"
         if path.exists():reviews[mode]=json.loads(path.read_text(encoding="utf-8"))
     baseline=json.loads((WORK/"baseline_summary.json").read_text()) if (WORK/"baseline_summary.json").exists() else {}
-    solver_path=Path("C:/Users/chrom/AppData/Local/Temp/cat-mechanics-validation.json")
+    solver_path=(Path(tempfile.gettempdir()) / 'cat-mechanics-validation.json')
     solver=json.loads(solver_path.read_text()) if solver_path.exists() else {}
     text+=f"\n\nREFERENCE_REVIEW = {reviews!r}\nREFERENCE_BASELINE = {baseline!r}\nREFERENCE_SOLVER_CHECKS = {solver!r}\n"
     text+='\nif __name__ == "__main__":\n    workflow_main()\n'
